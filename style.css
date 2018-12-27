@@ -1,0 +1,25 @@
+.btn {
+    color:steelblue;
+    margin: 10px 20px 30px 40px;
+    background-color: white;
+
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    
+    border: 2px solid goldenrod;
+    border-radius: 5px;
+    padding: 5px
+}
+.btn:hover{
+    background-color: gainsboro;
+}
+
+.btn.gray{
+    color: red;
+
+}
+
+span {
+    font-size:200px;
+}
