@@ -1,7 +1,24 @@
 body {
     font-family: "Roboto", sans-serif;
-    background-color: rgb(22, 22, 22);
+
     margin: 0;
+    height:100%;
+}
+
+.background-image {
+    background-color: rgb(22, 22, 22);
+
+    background-image: url("background-image.jpg");
+    background-size: cover;
+    display: block;
+    filter: blur(30px);
+    -webkit-filter: blur(30px);
+    height: 800px;
+    left: 0;
+    box-shadow: 0px 0px 40px 40px black;
+    position: fixed;
+    right: 0;
+    z-index: -100;
 }
 
 .foreground {
@@ -10,7 +27,7 @@ body {
 
 #header {
     padding: 10px;
-    background-color: #ffffff;
+
 }
 
 #header a {
@@ -22,6 +39,7 @@ body {
 
 #menu {
     font-family: 'Major Mono Display', monospace;
+    font-family: "Jura", sans-serif;
 
     margin: 0;
     padding: 0;
@@ -38,14 +56,23 @@ body {
 
 #name-greeting {
     font-family: 'Major Mono Display', monospace;
+    font-family: "Jura", sans-serif;
+
     margin-top: 30px;
     color: yellow;
     margin-bottom: 30px;
 }
 
+#nametitle {
+    color: rgb(216, 216, 216);
+    font-size:20px;
+    margin:0;
+    padding:0;
+}
+
 #realname {
     font-size: 40px;
-    margin-bottom: 5px;
+    margin: 0 0 0 5px;
 }
 
 #alias {
@@ -53,24 +80,23 @@ body {
     font-size: 20px;
 }
 
-#nametitle {
-    font-size:20px;
-}
+
 
 
 #main-info {
     margin:20px;
     padding:20px;
-    background-color: #ffffff;
     color: rgb(216, 216, 216);
     font-size: 15px;
     border-radius:5px;
 }
 
+
+
 #profile-picture-holder img {
     float: left;
-    width: 256px;
-    height: 256px;
+    width: 128px;
+    height: 128px;
     padding-right: 22px;
     padding-bottom:2px;
 }
@@ -81,7 +107,6 @@ body {
     bottom: 0;
     width:100%;
 
-    background-color: #ffffff;
     text-align: right;
 
     margin: 0;
