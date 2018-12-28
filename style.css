@@ -1,6 +1,7 @@
 body {
     font-family: "Roboto", sans-serif;
-
+    background: black;
+    color: rgb(216, 216, 216);
     margin: 0;
     height:100%;
 }
@@ -22,7 +23,7 @@ body {
 }
 
 .foreground {
-    background-color: rgb(34, 34, 34) !important;
+    background-color: rgb(22, 22, 22) !important;
 }
 
 #header {
@@ -38,7 +39,6 @@ body {
 
 
 #menu {
-    font-family: 'Major Mono Display', monospace;
     font-family: "Jura", sans-serif;
 
     margin: 0;
@@ -55,7 +55,6 @@ body {
 
 
 #name-greeting {
-    font-family: 'Major Mono Display', monospace;
     font-family: "Jura", sans-serif;
 
     margin-top: 30px;
@@ -108,7 +107,6 @@ body {
     width:100%;
 
     text-align: right;
-
     margin: 0;
     padding: 0;
     display: inline-block;
@@ -118,12 +116,21 @@ body {
 
 #footer ul{
     margin:5px;
+    vertical-align: middle;
 }
 
 #footer ul li {
     display: inline-block;
     margin: 0;
     padding: 0;
+}
+
+#copyright {
+    float: left;
+    font-style: italic;
+    padding-top: 10px;
+    padding-left: 10px;
+    
 }
 
 #footer a {
