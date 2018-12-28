@@ -57,6 +57,7 @@ body {
     font-size:20px;
 }
 
+
 #main-info {
     margin:20px;
     padding:20px;
@@ -66,7 +67,11 @@ body {
     border-radius:5px;
 }
 
-
+#profile-picture-holder img {
+    float: left;
+    padding-right: 15px;
+    padding-bottom:2px;
+}
 
 #footer {
     position: fixed;
