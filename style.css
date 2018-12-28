@@ -1,25 +1,85 @@
-.btn {
-    color:steelblue;
-    margin: 10px 20px 30px 40px;
-    background-color: white;
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #D9D9D9;
+    margin:0;
+}
 
-    font-weight: bold;
-    font-family: Arial, sans-serif;
+#header {
+    padding: 10px;
+    background-color: #ffffff;
+}
+
+
+#header a {
+    text-decoration: none;
+    color: rgb(129, 129, 129);
+    font-size: 17px;
+}
+
+#menu {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+
+#header ul li {
+    display: inline-block;
+    padding: 5px 10px 5px;
+}
+
+#name-greeting {
+    margin-top: 30px;
+    color: rgb(0, 162, 255);
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+#realname {
+    margin-bottom: 0px;
+}
+
+#alias {
+    margin:0px;
+    font-size: 15px;
+}
+
+#nametitle {
+    font-size:15px;
+}
+
+#main-info {
+    margin:20px;
+    padding:20px;
+    background-color: #ffffff;
+    color: rgb(129, 129, 129);
+}
+
+
+
+#footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width:100%;
+
+    background-color: #ffffff;
+    color: rgb(129, 129, 129);
+    text-align: center;
+
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+
+
+}
+
+#footer ul li {
+    display: inline-block;
+}
+
+#footer a {
+    text-decoration: none;
+    color: rgb(129, 129, 129);
     font-size: 14px;
-    
-    border: 2px solid goldenrod;
-    border-radius: 5px;
-    padding: 5px
-}
-.btn:hover{
-    background-color: gainsboro;
-}
-
-.btn.gray{
-    color: red;
-
-}
-
-span {
-    font-size:200px;
+    padding:10px;
 }
