@@ -45,17 +45,17 @@ body {
     display: inline-block;
 }
 
+.menu-item:hover {
+    filter: brightness(50%);
+}
 
 #header ul li {
     display: inline-block;
     padding: 5px 10px 5px;
 }
 
-
-
 #name-greeting {
     font-family: "Jura", sans-serif;
-
     margin-top: 30px;
     color: yellow;
     margin-bottom: 30px;
@@ -79,14 +79,20 @@ body {
 }
 
 
-
-
-#main-info {
+.info-container {
     margin:20px;
     padding:20px;
-    color: rgb(216, 216, 216);
+    color: rgb(235, 235, 235);
     font-size: 15px;
     border-radius:5px;
+    box-shadow: 0 0 1px black;
+}
+
+.container-title {
+    font-size: 20px;
+    font-family: "Jura", sans-serif;
+    padding-left: 5px;
+    color: yellow;
 }
 
 
@@ -97,6 +103,12 @@ body {
     height: 128px;
     padding-right: 22px;
     padding-bottom:2px;
+}
+
+
+
+.education-list-item, .portfolio-list-item {
+    padding: 6px;
 }
 
 #footer {
@@ -126,7 +138,9 @@ body {
 
 #copyright {
     float: left;
-    font-style: italic;
+    font-family: "Jura", sans-serif;
+
+    font-size: 14px;
     padding-top: 10px;
     padding-left: 10px;
     
@@ -145,6 +159,9 @@ body {
     padding-right: 20px;
 }
 
+.social-icon:hover {
+    filter: brightness(80%);
+}
 
 
 
