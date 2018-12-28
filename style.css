@@ -1,11 +1,11 @@
 body {
     font-family: "Roboto", sans-serif;
-    background-color: #222629;
-    margin:0;
+    background-color: rgb(22, 22, 22);
+    margin: 0;
 }
 
 .foreground {
-    background-color: #474B4F !important;
+    background-color: rgb(34, 34, 34) !important;
 }
 
 #header {
@@ -15,46 +15,55 @@ body {
 
 #header a {
     text-decoration: none;
-    color: white;
+    color: rgb(216, 216, 216);
     font-size: 17px;
 }
 
+
 #menu {
+    font-family: 'Major Mono Display', monospace;
+
     margin: 0;
     padding: 0;
     display: inline-block;
 }
+
 
 #header ul li {
     display: inline-block;
     padding: 5px 10px 5px;
 }
 
+
+
 #name-greeting {
+    font-family: 'Major Mono Display', monospace;
     margin-top: 30px;
-    color: #86C232;
-    font-size: 30px;
+    color: yellow;
     margin-bottom: 30px;
 }
 
 #realname {
-    margin-bottom: 0px;
+    font-size: 40px;
+    margin-bottom: 5px;
 }
 
 #alias {
     margin:0px;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 #nametitle {
-    font-size:15px;
+    font-size:20px;
 }
 
 #main-info {
     margin:20px;
     padding:20px;
     background-color: #ffffff;
-    color: white;
+    color: rgb(216, 216, 216);
+    font-size: 15px;
+    border-radius:5px;
 }
 
 
@@ -66,7 +75,7 @@ body {
     width:100%;
 
     background-color: #ffffff;
-    text-align: center;
+    text-align: right;
 
     margin: 0;
     padding: 0;
@@ -77,14 +86,28 @@ body {
 
 #footer ul li {
     display: inline-block;
+    margin: 0;
+    padding: 0;
 }
 
 #footer a {
     text-decoration: none;
-    color: white;
-    font-size: 17px;
-    padding:10px;
+    color: rgb(216, 216, 216);
+
+    padding: 0;
     margin: 0;
 }
 
+.social-icon {
+    width: 25px;
+    padding-right: 20px;
+}
+
+
+
+
+::selection {
+    background-color: yellow;
+    color:black;
+}
 
