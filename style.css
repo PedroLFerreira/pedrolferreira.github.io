@@ -78,7 +78,7 @@ header {
 #name-greeting {
     text-align: center;
     font-family: "Jura", sans-serif;
-    margin-top: 50px;
+
     color: floralwhite;
     margin-bottom: 0px;
     height: 100vh;
@@ -124,6 +124,7 @@ header {
 .info-container {
     margin:20px;
     padding:20px;
+    margin-top: 0;
     color: rgb(235, 235, 235);
     font-size: 15px;
     border-radius:5px;
