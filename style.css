@@ -6,6 +6,16 @@ body {
     height:100%;
 }
 
+.content {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.content-main {
+    flex: 1;
+}
+
 .background-image {
     background-color: rgb(22, 22, 22);
     background-image: url("background-forest.jpg");
@@ -23,6 +33,11 @@ body {
 
 .foreground {
     background-color: rgba(22, 22, 22, 0.699) !important;
+}
+
+#page-contaner {
+    position: relative;
+    min-height: 100vh;
 }
 
 #header {
@@ -121,25 +136,17 @@ body {
     padding: 6px;
 }
 
-#footer {
-    left: 0;
-    bottom: 0;
-    width:100%;
 
-    text-align: right;
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-
-
-}
 
 #footer ul{
     margin:5px;
+    padding:0;
     vertical-align: middle;
+    float: right;
 }
 
 #footer ul li {
+
     display: inline-block;
     margin: 0;
     padding: 0;
@@ -152,20 +159,35 @@ body {
     font-size: 14px;
     padding-top: 10px;
     padding-left: 10px;
-    
+    width:20%;
+}
+
+#footer-email {
+    float: left;
+    font-family: "Jura", sans-serif;
+    text-align:center;
+    font-size: 14px;
+    padding-top: 10px;
+    padding-left: 10px;
+    width:50%;
+}
+
+#footer-social-icons {
+    float: left;
+    width:27%;
 }
 
 #footer a {
     text-decoration: none;
     color: rgb(216, 216, 216);
 
-    padding: 0;
-    margin: 0;
+
 }
 
 .social-icon {
     width: 25px;
     padding-right: 10px;
+    padding-top: 0;
 }
 
 .social-icon:hover {
