@@ -8,7 +8,7 @@ body {
 
 .background-image {
     background-color: rgb(22, 22, 22);
-    background-image: url("background-image.jpg");
+    background-image: url("background-forest.jpg");
     background-size: cover;
     display: block;
     filter: blur(30px);
@@ -84,6 +84,10 @@ body {
 }
 
 
+#profile-description{
+    text-align: center;
+}
+
 .info-container {
     margin:20px;
     padding:20px;
@@ -103,6 +107,7 @@ body {
 
 
 #profile-picture-holder img {
+
     float: left;
     width: 128px;
     height: 128px;
@@ -167,7 +172,15 @@ body {
     filter: brightness(80%);
 }
 
-
+.hline {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 0.5px;
+}
 
 ::selection {
     background-color: yellow;
