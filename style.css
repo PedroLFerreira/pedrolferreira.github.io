@@ -79,6 +79,16 @@ footer {
     color: #984b43;
 }
 
+#ist-university{
+    text-decoration: none;
+    color: #984b43;
+}
+#downarrow {
+    padding: 50px 0 0;
+    color: #494949;
+    fill: currentColor
+}
+
 .articles-container{
     margin: 50px 50px;
 }
@@ -189,3 +199,4 @@ footer {
 
     background-color: #2e2e2e;
 }
+
