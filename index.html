@@ -5,166 +5,144 @@
         <meta name="viewport" content="width=device-width">
         <title>Pedro Ferreira</title>
         <link rel="stylesheet" href="style.css">
-        <link rel="icon" type="image/png" href="icons/favicon.png">
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Jura:700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     </head>
 
-
     <body>
-        <div class="background-image"></div>
-        <div class="content">
-            <header>
-                <div id="header" class="foreground">
-                    <ul id="menu">
-                        <li class="menu-item"><a href="index.html#about_me"> About </a></li>
-                        <li class="menu-item"><a href="index.html#portfolio"> Portfolio </a></li>
-                        <li class="menu-item"><a href="index.html#education"> Education </a></li>
-                        <li class="menu-item"><a href="index.html#contact"> Contact </a></li>
-                    </ul>
-                </div>
-            </header>
+        <header>
+            <!-- Header Menu -->
+            <div class="centered header-menu">
+                <ul class="header-menu-list">
+                    <li class="header-menu-item">
+                        <a href="#about_me"> About </a>
+                    </li>
+                    <li class="header-menu-item">
+                        <a href="#articles"> Articles </a>
+                    </li>
+                    <li class="header-menu-item">
+                        <a href="#contact"> Contact </a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        
+        <main>
+            <!-- Who am I-->
+            <div class="centered profile-header">
+                <img class="profile-image" src="profile_picture.jpg">
+                <p class="greeting">Hi! I'm Pedro Ferreira.</p>
+                <p>I have a BSc. in Engineering Physics and a MSc. in Applied Mathematics from Instituto Superior Técnico.</p>
+                <p>I'm currently working on my MSc. thesis on the theory of mind in multi-agent systems.</p>
+                <p>_________________________________</p>
+                <p>Scroll to find out more about me.</p>
+            </div>
 
-            <main class="content-main">
-                
-                <div id="name-greeting">
-                    <div class="center-text">
-                        <div id="profile-picture-holder">
-                            <img src="profile_picture.jpg">
-                        </div>
-                        <p id="realname"> <strong>Pedro Ferreira</strong> </p>
-                        <p id="alias">@tetraktyz</p>
+            <!-- Articles -->
+            <div class="centered articles-container">
+                <a name="articles"></a>
+                <div class="container-title">
+                    Articles
+                </div>
+
+                <div class="article-card">
+                    <div class="article-image-container">
+                        <img class="article-image" src="https://www.w3schools.com/w3css/img_lights.jpg">
                     </div>
-                </div>
-                
-                
-                <div id="global-container">
-                    
-                    <div  class="foreground info-container">
-                        <a name="about_me"></a>
-                        <div class="container-title">
-                            About
-                        </div>
-                        
-                        <hr class="hline">
-                        
-                        <div id="profile-description">
-                            | Under construction |
 
+                    <div class="article-description-container">
+                        <div class="article-description">
+                            <div class="article-title">
+                                How latin works
+                            </div>
+
+                            <div class="article-summary"> 
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus sit amet volutpat consequat mauris. Tincidunt eget nullam non nisi. Lobortis mattis aliquam faucibus purus. Arcu risus quis varius quam quisque id diam vel quam. Felis bibendum ut tristique et egestas quis ipsum. Eu sem integer vitae justo eget magna fermentum iaculis. Quam nulla porttitor massa id. Metus aliquam eleifend mi in. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida.                    
+                            </div>
                             
+                        </div>
+                        <div class="article-footer">
+                            January 2019
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-image-container">
+                        <img class="article-image" src="https://www.w3schools.com/w3css/img_lights.jpg">
+                    </div>
+
+                    <div class="article-description-container">
+                        <div class="article-description">
+                            <div class="article-title">
+                                How latin works
+                            </div>
+
+                            <div class="article-summary"> 
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus sit amet volutpat consequat mauris. Tincidunt eget nullam non nisi. Lobortis mattis aliquam faucibus purus. Arcu risus quis varius quam quisque id diam vel quam. Felis bibendum ut tristique et egestas quis ipsum. Eu sem integer vitae justo eget magna fermentum iaculis. Quam nulla porttitor massa id. Metus aliquam eleifend mi in. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida.                    
+                            </div>
                             
                         </div>
-                    </div>
-                    
-                    <div class="foreground info-container">
-                        <a name="portfolio"></a>
-                        <div class="container-title">
-                            Porfolio
+                        <div class="article-footer">
+                            January 2019
                         </div>
-                        <hr class="hline">
-                        <div>
-                            <ul class="portfolio-list">
-                                <li class="portfolio-list-item">
-                                    <div class="portfolio-list-title">
-                                        2017-2018 | Tutoring - Electromagnetism and Calculus
-                                    </div>
-                                    <div>
-                                        <ul>
-                                            <li>Soft Skills</li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="portfolio-list-item">
-                                    <div class="portfolio-list-title">
-                                        2017 | Android application for Sudoku Recognition and Solving
-                                    </div>
-                                    <div>
-                                        <ul>
-                                            <li>Computer Vision</li>
-                                            <li>Android Development</li>
-                                            <li>C++</li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                
-                                <li class="portfolio-list-item">
-                                    <div class="portfolio-list-title">
-                                        2016 | Signal prediction for the SNO+ experiment
-                                    </div>
-                                    <div>
-                                        <ul>
-                                            <li>Particle Physics</li>
-                                            <li>C++</li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="foreground info-container">
-                        <a name="education"></a>
-                        <div class="container-title">
-                            Education
-                        </div>
-                        <hr class="hline">
-                        <div>
-                            <ul class="education-list">
-                                <li class="education-list-item">
-                                    <div class="education-list-title">
-                                        2019 | Defended MSc. Thesis - Game Theory of Mind
-                                    </div>
-                                </li>
-                                <li class="education-list-item">
-                                    <div class="education-list-title">
-                                        2017-2019 | MSc. Applied Mathematics at Instituto Superior Técnico, Lisbon
-                                    </div>
-                                    <div class="education-list-description">
-                                        <ul>
-                                            <li>
-                                                Major in Statistics
-                                            </li>
-                                            <li>
-                                                Minor in Artificial Intelligence
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="education-list-item">
-                                    <div class="education-list-title">
-                                        2014-2017 | BSc. Engineering Physics at Instituto Superior Técnico, Lisbon
-                                    </div>
-                                    <div class="education-list-description">
-                                        
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                </div>
-            </main>
-            
-
-
-            <footer>
-                <div id="footer" class="foreground">
-                    <a name="contact"></a>
-                    <div id="copyright">© 2018-2019 Pedro Ferreira</div>
-                    <div id="footer-email"><a href="mailto:mainminmax@gmail.com">mainminmax@gmail.com</a></div>
-                    
-                    <div id="footer-social-icons">
-                        <ul>
-                            <li><a href="https://github.com/tetraktyz/" target="_blank"> <img class="social-icon" src="icons/github.png" alt="github"> </a></li>
-                            <li><a href="https://twitter.com/tetraktyz" target="_blank"> <img class="social-icon" src="icons/twitter.png" alt="twitter"> </a></li>
-                            <li><a href="https://www.linkedin.com/in/tetraktyz/" target="_blank"> <img class="social-icon" src="icons/linkedin.png" alt="linkedin"> </a></li>    
-                        </ul> 
                     </div>
                 </div>
-            </footer>
-        </div>
+
+            </div>
+        </main>
+
+        <footer>
+            <a name="contact"></a>
+            <!-- Social Media links -->
+            <div class="centered">
+                <ul class="social-media-list">
+                    <li class="social-media-item" id="Twitter">
+                        <a href="https://twitter.com/tetraktyz" alt="Twitter" target="_blank">
+                            <svg class="svg-icon" viewBox="0 0 20 20"  width=30px height="100%">
+                                <title>Twitter</title>
+                                <path  d="M18.258,3.266c-0.693,0.405-1.46,0.698-2.277,0.857c-0.653-0.686-1.586-1.115-2.618-1.115c-1.98,0-3.586,1.581-3.586,3.53c0,0.276,0.031,0.545,0.092,0.805C6.888,7.195,4.245,5.79,2.476,3.654C2.167,4.176,1.99,4.781,1.99,5.429c0,1.224,0.633,2.305,1.596,2.938C2.999,8.349,2.445,8.19,1.961,7.925C1.96,7.94,1.96,7.954,1.96,7.97c0,1.71,1.237,3.138,2.877,3.462c-0.301,0.08-0.617,0.123-0.945,0.123c-0.23,0-0.456-0.021-0.674-0.062c0.456,1.402,1.781,2.422,3.35,2.451c-1.228,0.947-2.773,1.512-4.454,1.512c-0.291,0-0.575-0.016-0.855-0.049c1.588,1,3.473,1.586,5.498,1.586c6.598,0,10.205-5.379,10.205-10.045c0-0.153-0.003-0.305-0.01-0.456c0.7-0.499,1.308-1.12,1.789-1.827c-0.644,0.28-1.334,0.469-2.06,0.555C17.422,4.782,17.99,4.091,18.258,3.266"></path>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="social-media-item" id="Medium">
+                        <a href="https://medium.com/@tetraktyz" alt="Medium" target="_blank">
+                            <svg class="svg-icon" viewBox="0 0 24 24"  width=30px height="100%">
+                                <title>Medium</title>
+                                <path d="M0 0v24h24V0H0zm19.938 5.686L18.651 6.92a.376.376 0 0 0-.143.362v9.067a.376.376 0 0 0 .143.361l1.257 1.234v.271h-6.322v-.27l1.302-1.265c.128-.128.128-.165.128-.36V8.99l-3.62 9.195h-.49L6.69 8.99v6.163a.85.85 0 0 0 .233.707l1.694 2.054v.271H3.815v-.27L5.51 15.86a.82.82 0 0 0 .218-.707V8.027a.624.624 0 0 0-.203-.527L4.019 5.686v-.27h4.674l3.613 7.923 3.176-7.924h4.456v.271z"></path>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="social-media-item" id="GitHub">
+                        <a href="https://github.com/tetraktyz/" alt="GitHub" target="_blank">
+                            <svg class="svg-icon" viewBox="0 0 24 24"  width=30px height="100%">
+                                <title>GitHub</title>
+                                <path  d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="social-media-item" id="LinkedIn">
+                        <a href="https://www.linkedin.com/in/tetraktyz/" alt="LinkedIn" target="_blank">
+                            <svg class="svg-icon" viewBox="0 0 24 24"  width=30px height="100%">
+                                <title>LinkedIn</title>
+                                <path  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Email -->
+            <div class="centered email">
+                <a href="mailto:mainminmax@gmail.com">mainminmax@gmail.com</a></div> 
+           </div>
+
+            <!-- Copyright -->
+            <div class="centered copyright">
+                © 2018-2019 Pedro Ferreira. All rights reserved.
+            </div>
             
+        </footer>
     </body>
+
 </html>

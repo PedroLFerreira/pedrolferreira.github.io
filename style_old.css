@@ -1,0 +1,223 @@
+body {
+    font-family: "Roboto", sans-serif;
+    background: black;
+    color: floralwhite;
+    margin: 0;
+    height:100%;
+}
+
+.content {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.content-main {
+    flex: 1;
+}
+
+.background-image {
+    background-color: rgb(22, 22, 22);
+    background-image: url("background-forest.jpg");
+    background-size: cover;
+    display: block;
+    filter: blur(30px);
+    -webkit-filter: blur(20px);
+    transform: scale(1.2);
+    height: 800px;
+    left: 0;
+    position: fixed;
+    right: 0;
+    z-index: -100;
+}
+
+.foreground {
+    background-color: rgba(22, 22, 22, 0.699) !important;
+}
+
+#page-contaner {
+    position: relative;
+    min-height: 100vh;
+}
+
+#header {
+    padding: 0px;
+    display: block;
+    text-align: center;
+    left: 0;
+    top: 0;
+    width:100%;
+}
+
+#header a {
+    text-decoration: none;
+    color: rgb(216, 216, 216);
+    font-size: 17px;
+}
+
+header {
+    z-index: 10;
+}
+#menu {
+    font-family: "Jura", sans-serif;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+
+
+.menu-item:hover {
+    filter: brightness(50%);
+}
+
+#header ul li {
+    display: inline-block;
+    padding: 5px 10px 5px;
+}
+
+#name-greeting {
+    text-align: center;
+    font-family: "Jura", sans-serif;
+
+    color: floralwhite;
+    margin-bottom: 0px;
+    height: 100vh;
+    position: relative;
+}
+
+#profile-picture-holder img {
+    width: 128px;
+    height: 128px;
+    border-radius: 30px;
+
+}
+
+.center-text {
+    position: relative;
+    padding: 10% 0 0;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#nametitle {
+    color: rgb(216, 216, 216);
+    font-size:20px;
+    margin:0;
+    padding:0;
+}
+
+#realname {
+    font-size: 40px;
+    margin: 0 0 0 5px;
+}
+
+#alias {
+    margin:0px;
+    font-size: 20px;
+}
+
+
+#profile-description{
+    text-align: center;
+}
+
+.info-container {
+    margin:20px;
+    padding:20px;
+    margin-top: 0;
+    color: rgb(235, 235, 235);
+    font-size: 15px;
+    border-radius:5px;
+    box-shadow: 0 0 1px black;
+}
+
+.container-title {
+    font-size: 20px;
+    font-family: "Jura", sans-serif;
+    padding: 0 0 7px;
+    color: floralwhite;
+    text-align: center;
+}
+
+
+
+
+
+
+.education-list-item, .portfolio-list-item {
+    padding: 6px;
+}
+
+
+
+#footer ul{
+    margin:5px;
+    padding:0;
+    vertical-align: middle;
+    float: right;
+}
+
+#footer ul li {
+
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+#copyright {
+    float: left;
+    font-family: "Jura", sans-serif;
+
+    font-size: 14px;
+    padding-top: 10px;
+    padding-left: 10px;
+    width:20%;
+}
+
+#footer-email {
+    float: left;
+    font-family: "Jura", sans-serif;
+    text-align:center;
+    font-size: 14px;
+    padding-top: 10px;
+    padding-left: 10px;
+    width:50%;
+}
+
+#footer-social-icons {
+    float: left;
+    width:27%;
+}
+
+#footer a {
+    text-decoration: none;
+    color: rgb(216, 216, 216);
+
+
+}
+
+.social-icon {
+    width: 25px;
+    padding-right: 10px;
+    padding-top: 0;
+}
+
+.social-icon:hover {
+    filter: brightness(80%);
+}
+
+.hline {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 0.5px;
+}
+
+::selection {
+    background-color: white;
+    color:black;
+}
+
