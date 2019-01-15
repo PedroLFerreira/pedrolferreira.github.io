@@ -99,19 +99,19 @@ footer {
 
 
 .articles-container{
-    margin: 10px 50px 50px;
+    margin: 10px 20px 50px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-evenly;
-    
+    flex-wrap: wrap;
 }
 
 .article-card {
     background-color: rgb(252, 252, 252);
     display: flex;
 
-    width: 400px;
+    width: 300px;
     flex-direction: column;
 
     margin: 20px;
@@ -173,10 +173,11 @@ footer {
     padding: 0;
     font-size: 13px;
     color: #a9a9a9;
+    text-align: center;
 }
 
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 600px) {
 
     .articles-container {
         flex-direction: column;
