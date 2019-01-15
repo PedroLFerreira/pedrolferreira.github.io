@@ -115,12 +115,22 @@ footer {
     flex-direction: column;
 
     margin: 20px;
-    border-radius: 5px;
+    border-radius: 0px;
     box-shadow: 0px 0px 20px rgb(233, 233, 233);
 }
 
+.article-card a {
+    text-decoration: none;
+}
+
+.article-card:hover{
+    box-shadow: 0px 0px 20px rgb(126, 126, 126);
+}
+
+
+
 .article-image-container{
-    padding: 0 0 10px;
+    padding: 0;
     margin: 0;
     float: left;
 }
@@ -136,20 +146,25 @@ footer {
 }
 
 .article-description-container{
-    padding: 10px;
+    padding: 0 10px 10px;
     margin: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    text-align: left;
+    text-align: justify;
+    text-justify: auto;
     
     align-content: center;
     color: #494949;
+
+    font-size: 13px;
 }
 
 .article-title {
-    margin: 5px 0;
-    font-size: 25px;
+    margin: 0;
+    padding: 3px 0 8px;
+    font-size: 23px;
+    text-align: center;
     color: #494949;
 }
 
@@ -170,7 +185,7 @@ footer {
     }
 
     .article-card {
-        width: 300px;
+        width: 80vw;
     }
 }
 
