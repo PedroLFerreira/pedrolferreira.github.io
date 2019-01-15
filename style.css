@@ -168,6 +168,10 @@ footer {
         align-items: center;
         justify-content: center;
     }
+
+    .article-card {
+        width: 300px;
+    }
 }
 
 .social-media-list{
