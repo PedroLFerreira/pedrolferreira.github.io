@@ -80,8 +80,13 @@ footer {
     color: #984b43;
 }
 
-#ist-university{
-    text-decoration: none;
+.greeting-description {
+    font-size: 16px;
+
+}
+
+.inline-link{
+    text-decoration-style: double;
     color: #984b43;
 }
 
@@ -128,6 +133,7 @@ footer {
     flex-direction: column;
     justify-content: space-between;
     text-align: left;
+    
     align-content: center;
     color: #494949;
 }
@@ -143,6 +149,22 @@ footer {
     padding: 0;
     font-size: 13px;
     color: #a9a9a9;
+}
+
+
+@media (max-width: 600px) {
+    .article-card {
+        flex-direction: column;
+    }
+    .article-title, .article-description-container{
+        text-align: center;
+    }
+
+    .article-description-container{
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    
 }
 
 .social-media-list{
