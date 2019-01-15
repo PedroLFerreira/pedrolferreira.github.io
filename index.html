@@ -7,6 +7,8 @@
         <link rel="stylesheet" href="style.css">
         <link rel="icon" type="image/png" href="icons/websitelogo.png">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+
     </head>
 
     <body>
@@ -15,13 +17,13 @@
             <div class="centered header-menu">
                 <ul class="header-menu-list">
                     <li class="header-menu-item">
-                        <a href="#about_me"> About </a>
+                        <a href="#about"> ABOUT </a>
                     </li>
                     <li class="header-menu-item">
-                        <a href="#articles"> Articles </a>
+                        <a href="#articles"> WRITING </a>
                     </li>
                     <li class="header-menu-item">
-                        <a href="#contact"> Contact </a>
+                        <a href="#contact"> CONTACT </a>
                     </li>
                 </ul>
             </div>
@@ -32,9 +34,12 @@
             <div class="centered profile-header">
                 <img class="profile-image" src="profile_picture.jpg">
                 <p class="greeting">Hi! I'm Pedro Ferreira.</p>
-                <p class="greeting-description">I'm interested in the development of Artificial General Intelligence.</p>
-                <p class="greeting-description">I have a BSc. in Engineering Physics and a MSc. in Applied Mathematics from <a class="inline-link" href="https://tecnico.ulisboa.pt/en/">Instituto Superior Técnico</a>, Lisbon, Portugal.</p>
-                <p class="greeting-description">I'm currently working on my MSc. thesis on the theory of mind in multi-agent systems.</p>
+                <div class="greeting-description-container">
+                        <p class="greeting-description">I'm interested in the development of Artificial General Intelligence.</p>
+                        <p class="greeting-description">I have a BSc. in <strong>Engineering Physics</strong> and a MSc. in <strong>Applied Mathematics</strong> from <a class="inline-link" href="https://tecnico.ulisboa.pt/en/">Instituto Superior Técnico</a>, Lisbon, Portugal.</p>
+                        <p class="greeting-description">I'm currently working on my MSc. thesis on the <strong>theory of mind in multi-agent systems</strong>.</p>
+                </div>
+                
                 <div class="centered">
                     
                     <ul class="social-media-list">
@@ -78,11 +83,12 @@
             </div>
 
             <!-- Articles -->
-            <div class="centered articles-container">
+            <div class="container-title">
                 <a name="articles"></a>
-                <div class="container-title">
-                    Articles
-                </div>
+                Articles
+            </div>
+            <div class="centered articles-container">
+                
 
                 <div class="article-card">
                     <div class="article-image-container">
@@ -94,15 +100,15 @@
                             <div class="article-title">
                                 How latin works
                             </div>
-
-                            <div class="article-summary"> 
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus sit amet volutpat consequat mauris. Tincidunt eget nullam non nisi. Lobortis mattis aliquam faucibus purus. Arcu risus quis varius quam quisque id diam vel quam. Felis bibendum ut tristique et egestas quis ipsum. Eu sem integer vitae justo eget magna fermentum iaculis. Quam nulla porttitor massa id. Metus aliquam eleifend mi in. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida.                    
-                            </div>
                             
+                            <div class="article-summary"> 
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus sit amet volutpat consequat mauris. Tincidunt eget nullam non nisi. Lobortis mattis aliquam faucibus purus. Arcu risus quis varius quam quisque id diam vel quam. Felis bibendum ut tristique et egestas quis ipsum. Eu sem integer vitae justo eget magna fermentum iaculis. 
+                            </div>
+                            <div class="article-meta">
+                                January 2019
+                            </div>
                         </div>
-                        <div class="article-footer">
-                            January 2019
-                        </div>
+                        
                     </div>
                 </div>
 
@@ -122,7 +128,7 @@
                             </div>
                             
                         </div>
-                        <div class="article-footer">
+                        <div class="article-meta">
                             January 2019
                         </div>
                     </div>
