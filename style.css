@@ -5,7 +5,7 @@ body {
     font-family: "Roboto", sans-serif;
     font-size: 14px;
     color: #494949;
-
+    background-color: #dfdfdf;
 }
 
 header {
@@ -13,19 +13,23 @@ header {
 }
 
 main {
-    background-color: rgb(252, 252, 252);
+    background-color: #dfdfdf;
 }
 
 footer {
+    padding: 10px 0 10px;
     background-color: #f4f4f4;
+}
+
+.my-name {
+    margin: 0.67em;
 }
 
 .container-title{
     font-size: 25px;
     text-align: center;
     color: #494949;
-    color: #984b43;
-    padding: 0;
+    padding: 10px 0 0;
     margin: 0;
 }
 
@@ -34,7 +38,9 @@ footer {
 }
 
 .header-menu {
-    box-shadow: 0px 0px 20px #c7c7c7;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .header-menu-list{
@@ -48,6 +54,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .header-menu-item{
@@ -67,8 +74,10 @@ footer {
 }
 
 .profile-header {
+    background-color: #f4f4f4;
     margin: 0;
     padding: 40px;
+    box-shadow: 0 5px 20px 0px #8b8b8b;
 }
 
 .profile-image {
@@ -85,11 +94,11 @@ footer {
 
 .greeting-description-container {
     margin: 0 30px 0;
+
 }
 
 .greeting-description {
     font-size: 16px;
-
 }
 
 .inline-link{
@@ -97,13 +106,18 @@ footer {
     color: #984b43;
 }
 
-
 .articles-container{
-    margin: 10px 20px 50px;
+    padding: 10px 0 10px;
+
+}
+
+.article-cards-container{
+    margin: 0px 20px 50px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: space-evenly;
+    align-content: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -115,8 +129,7 @@ footer {
     flex-direction: column;
 
     margin: 20px;
-    border-radius: 0px;
-    box-shadow: 0px 0px 20px rgb(233, 233, 233);
+    box-shadow: 0px 0px 20px rgb(190, 190, 190);
 }
 
 .article-card a {
@@ -124,7 +137,7 @@ footer {
 }
 
 .article-card:hover{
-    box-shadow: 0px 0px 20px rgb(126, 126, 126);
+    box-shadow: 0px 0px 30px rgb(172, 172, 172);
 }
 
 
@@ -191,7 +204,7 @@ footer {
 }
 
 .social-media-list{
-    padding: 10px 0 0;
+    padding: 0 0 0;
     margin: 0;
     list-style: none;
     display: -webkit-box;
@@ -215,6 +228,12 @@ footer {
     fill: currentColor;
 }
 
+.footer-text {
+    text-align: center;
+    padding: 5px 0 0;
+    margin: 0;
+}
+
 #Twitter svg:hover {
     color: #1dcaff;
 }
@@ -231,12 +250,17 @@ footer {
     color: #0077b5;
 }
 
+.email {
+    padding: 0 0 10px;
+
+}
+
 .email a{
     color: black;
 }
 
 .copyright{
-    padding: 5px;
+    padding: 5px 5px 10px;
 }
 
 ::selection {
