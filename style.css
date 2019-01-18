@@ -10,9 +10,12 @@ body {
     background-color: #dfdfdf;
 }
 
-h1, h2, h3{
+h1, h2, h3, h4{
     font-family: "Playfair Display", serif;
+}
 
+h3, h4 {
+    font-weight: normal;
 }
 
 header {
