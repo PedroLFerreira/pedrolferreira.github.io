@@ -1,13 +1,14 @@
 const canvas = document.getElementById("canvas");
 const c = canvas.getContext("2d");
 canvas.width = window.innerWidth;
-canvas.height = 200 +40;
+canvas.height = 200 +40*2;
 canvas.style.zIndex = -100;
 
 
 
-n_dots = 500;
-c.fillStyle = "rgb(100,100,100)";
+n_dots = 100;
+
+c.fillStyle = "rgb(0,200,0,0.5)";
 console.log(canvas.width,canvas.height);
 
 class Dot {
@@ -60,13 +61,14 @@ function init() {
 function animate(){
     if(canvas.width!=window.innerWidth){
         canvas.width = window.innerWidth;
+        c.fillStyle = "rgb(200,0,0,0.5)";
     }
 
-    c.clearRect(0,0,canvas.width,canvas.height);
+    //c.clearRect(0,0,canvas.width,canvas.height);
 
     for (let i = 0; i < dots.length; i++) {
         dots[i].update();
-        c.fillRect(dots[i].x,dots[i].y,2,2);
+        c.fillRect(dots[i].x,dots[i].y,1,1);
     }
 
     window.requestAnimationFrame(animate);
