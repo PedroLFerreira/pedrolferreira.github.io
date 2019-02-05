@@ -1,0 +1,284 @@
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+
+    font-size: 14px;
+    color: #494949;
+    background-color: #dfdfdf;
+}
+
+h1, h2, h3, h4{
+}
+
+h3, h4 {
+    font-weight: normal;
+}
+
+
+
+header {
+    background-color: #f4f4f4;
+}
+
+main {
+    background-color: #dfdfdf;
+}
+
+footer {
+    padding: 10px 0 10px;
+    background-color: #f4f4f4;
+    font-size: 16px;
+}
+
+.my-name {
+    margin: 0.67em;
+}
+
+.container-title{
+    font-size: 25px;
+    text-align: center;
+    color: #494949;
+    padding: 10px 0 0;
+    margin: 0;
+}
+
+.centered{
+    text-align: center;
+}
+
+.header-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.header-menu-list{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.header-menu-item{
+    width:70px;
+    margin: 10px 20px;
+    text-align: center;    
+}
+
+.header-menu-item a{
+    font-size: 24px;
+    color:#494949;
+    text-decoration: none;
+}
+
+.header-menu-item a:hover{
+    color: #984b43;
+}
+
+.profile-header {
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 40px;
+    box-shadow: 0 5px 20px 0px #8b8b8b;
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    box-shadow: 0 0 20px #494949;
+}
+
+.greeting {
+    font-size: 30px;
+    color: #984b43;
+}
+
+.greeting-description-container {
+    margin: 0 30px 0;
+
+}
+
+.greeting-description {
+    font-size: 20px;
+}
+
+.inline-link{
+    text-decoration-style: solid;
+    color: #984b43;
+}
+
+.articles-container{
+    padding: 10px 0 10px;
+}
+
+.article-cards-container{
+    margin: 0px 20px 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    align-content: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.article-card {
+    background-color: rgb(252, 252, 252);
+    display: flex;
+
+    width: 300px;
+    flex-direction: column;
+
+    margin: 20px;
+    box-shadow: 0px 0px 20px rgb(190, 190, 190);
+}
+
+.article-card a {
+    text-decoration: none;
+}
+
+.article-card:hover{
+    box-shadow: 0px 0px 30px rgb(172, 172, 172);
+}
+
+
+
+.article-image-container{
+    padding: 0;
+    margin: 0;
+    float: left;
+}
+
+.article-image{
+    padding: 0;
+    margin: 0;
+
+    max-width: 100%;
+    height: auto;
+
+
+}
+
+.article-description-container{
+    padding: 0 10px 10px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    text-justify: auto;
+    
+    align-content: center;
+    color: #494949;
+
+    font-size: 17px;
+}
+
+.article-title {
+    margin: 0;
+    padding: 15px 0 15px;
+    font-size: 25px;
+    text-align: center;
+    color: #494949;
+}
+
+.article-meta {
+    padding: 15px 0 0;
+    margin:0;
+    font-size: 13px;
+    color: #a9a9a9;
+    text-align: center;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+    .articles-container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .article-card {
+        width: 80vw;
+    }
+}
+
+.social-media-list{
+    padding: 0 0 0;
+    margin: 0;
+    list-style: none;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-media-item {
+    margin: 10px;
+    text-align: center;
+
+    color:rgb(0, 0, 0);
+}
+
+.social-media-item svg {
+    color:rgb(83, 83, 83);
+    fill: currentColor;
+}
+
+.footer-text {
+    text-align: center;
+    padding: 5px 0 0;
+    margin: 0;
+}
+
+#Twitter svg:hover {
+    color: #1dcaff;
+}
+
+#Medium svg:hover{
+    color:black;
+}
+
+#GitHub svg:hover{
+    color: black;
+}
+
+#LinkedIn svg:hover{
+    color: #0077b5;
+}
+
+.email {
+    padding: 0 0 10px;
+
+}
+
+.email a{
+    color: black;
+}
+
+.copyright{
+    padding: 5px 5px 10px;
+}
+
+::selection {
+
+    color: white;
+
+    background-color: #2e2e2e;
+}
+
