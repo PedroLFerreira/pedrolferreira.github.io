@@ -8,9 +8,13 @@ canvas.style.zIndex = -100;
 
 n_dots = 100;
 
-c.fillStyle = "rgb(0,200,0,0.5)";
-console.log(canvas.width,canvas.height);
+var backgroundColor = "rgb(50,50,50,1)";
+var agentColor = "rgb(255,255,255,0.3)"
 
+
+c.fillStyle = backgroundColor;
+c.fillRect(0,0,canvas.width,canvas.height);
+c.fillStyle = agentColor;
 class Dot {
     constructor(x, y, dx, dy) {
         this.x = x;
@@ -61,10 +65,10 @@ function init() {
 function animate(){
     if(canvas.width!=window.innerWidth){
         canvas.width = window.innerWidth;
-        c.fillStyle = "rgb(200,0,0,0.5)";
+        c.fillStyle = backgroundColor;
+        c.fillRect(0,0,canvas.width,canvas.height);
+        c.fillStyle = agentColor;
     }
-
-    //c.clearRect(0,0,canvas.width,canvas.height);
 
     for (let i = 0; i < dots.length; i++) {
         dots[i].update();
