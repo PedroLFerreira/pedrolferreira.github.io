@@ -63,7 +63,7 @@ p {
 }
 
 
-img {
+.img-container {
     border: 0px white solid;
     height: 40vh;
 }
