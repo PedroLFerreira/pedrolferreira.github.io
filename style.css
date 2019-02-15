@@ -117,7 +117,7 @@ canvas {
     background-color: rgb(252, 252, 252);
     display: flex;
 
-    width: 300px;
+    width: 250px;
     flex-direction: column;
     padding:0;
     margin: 20px;
