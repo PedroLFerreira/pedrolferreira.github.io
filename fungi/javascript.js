@@ -7,11 +7,11 @@ var height = $(window).height();
 var originPoint = [width/2,height/2];
 var originPoint2 = [width/2,height/2+5];
 
-const growthStep = 3;
+const growthStep = 2;
 const growthNoise = 1;
 const R = 10;
 const N_branch = 5;
-const P_branch = 0.4;
+const P_branch = 0.9;
 const neighbour_dir_influence = 1;
 
 class Node {
@@ -78,7 +78,7 @@ function getAverageNeighbourDirection(neighbours){
     return [field_x, field_y];
 }
 
-var nodeList = [new Node(0,1,originPoint,true), new Node(1,0,originPoint2)];
+var nodeList = [new Node(0,1,originPoint), new Node(1,0,originPoint2)];
 var tipNodeList = nodeList.filter((node) => {return node.isTip == true;})
 
 
@@ -162,8 +162,9 @@ var interval = null;
 $(document).click(function (e) {
     if(interval == null){
         ctx.clearRect(0, 0, width, height);
-        nodeList = [new Node(0,1,originPoint,true), new Node(1,0,originPoint2)];
+        nodeList = [new Node(0,1,originPoint), new Node(1,0,originPoint2)];
         tipNodeList = nodeList.filter((node) => {return node.isTip == true;})
+        drawNetwork();
         interval = setInterval(function(){
             iterate();
             $("#panel").html("Number of nodes: " + nodeList.length);
