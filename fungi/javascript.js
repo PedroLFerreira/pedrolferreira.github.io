@@ -159,8 +159,8 @@ $(function(){
 })
 
 var interval = null;
-$(document).keypress(function (e) {
-    if(e.code == "Space" && interval == null){
+$(document).click(function (e) {
+    if(interval == null){
         ctx.clearRect(0, 0, width, height);
         nodeList = [new Node(0,1,originPoint,true), new Node(1,0,originPoint2)];
         tipNodeList = nodeList.filter((node) => {return node.isTip == true;})
