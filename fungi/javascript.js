@@ -168,7 +168,7 @@ $(document).keypress(function (e) {
             iterate();
             $("#panel").html("Number of nodes: " + nodeList.length);
             // console.log("Number of nodes: ", nodeList.length);
-            if(nodeList.length >= 5000){
+            if(nodeList.length >= 10000){
                 $("#panel").html("Number of nodes: " + nodeList.length + "   Simulation complete. Press SPACE to simulate again...");
                 clearInterval(interval);
                 interval = null;
