@@ -20,11 +20,9 @@ class Node {
         this.parent_id = parent_id;
         this.position = position;
         this.isTip = isTip;
+        this.isActive = true;
     }
 }
-
-var nodeList = [new Node(0,1,originPoint,true), new Node(1,0,originPoint2)];
-var tipNodeList = nodeList.filter((node) => {return node.isTip == true;})
 
 function drawLine(from, to) {
     ctx.beginPath();
@@ -80,14 +78,26 @@ function getAverageNeighbourDirection(neighbours){
     return [field_x, field_y];
 }
 
+var nodeList = [new Node(0,1,originPoint,true), new Node(1,0,originPoint2)];
+var tipNodeList = nodeList.filter((node) => {return node.isTip == true;})
+
+
 function iterate() {
     var newNodes = [];
     // console.log(nodeList);
     nodeList.forEach((node) => {
+
+        if(!node.isActive){
+            return;
+        }
+
         var x = node.position[0], y = node.position[1];
 
         // Find neighbouring segments of mycelium (N) which are at distance less than R
         var neighbours = getNeighbours(node);
+        if(neighbours.length > N_branch){
+            node.isActive = false;
+        }
 
         // Grow if tip
         if(node.isTip){
@@ -136,11 +146,11 @@ function iterate() {
 
             newNodes.push(newNode);
         }
+
     })
 
     drawNewNodes(newNodes);
 }
-
 
 $(function(){
     ctx.canvas.width = width;
@@ -148,24 +158,23 @@ $(function(){
     drawNetwork();
 })
 
-
 var interval = null;
 $(document).keypress(function (e) {
-    
-    
     if(e.code == "Space" && interval == null){
+        ctx.clearRect(0, 0, width, height);
+        nodeList = [new Node(0,1,originPoint,true), new Node(1,0,originPoint2)];
+        tipNodeList = nodeList.filter((node) => {return node.isTip == true;})
         interval = setInterval(function(){
             iterate();
             $("#panel").html("Number of nodes: " + nodeList.length);
-            console.log("Number of nodes: ", nodeList.length);
-            if(nodeList.length > 5000){
-                $("#panel").html("Number of nodes: " + nodeList.length + "   Simulation complete.");
+            // console.log("Number of nodes: ", nodeList.length);
+            if(nodeList.length >= 5000){
+                $("#panel").html("Number of nodes: " + nodeList.length + "   Simulation complete. Press SPACE to simulate again...");
                 clearInterval(interval);
+                interval = null;
             }
         },50);
-        iterate();
-        
-        // drawNetwork();
+        // iterate();
     }
 });
 
