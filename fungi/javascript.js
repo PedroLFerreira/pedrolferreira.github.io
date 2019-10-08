@@ -7,11 +7,11 @@ var height = $(window).height();
 var originPoint = [width/2,height/2];
 var originPoint2 = [width/2,height/2+5];
 
-const growthStep = 5;
+const growthStep = 3;
 const growthNoise = 1;
-const R = 50;
-const N_branch = 30;
-const P_branch = 0.6;
+const R = 10;
+const N_branch = 5;
+const P_branch = 0.4;
 const neighbour_dir_influence = 1;
 
 class Node {
@@ -169,7 +169,7 @@ $(document).click(function (e) {
             $("#panel").html("Number of nodes: " + nodeList.length);
             // console.log("Number of nodes: ", nodeList.length);
             if(nodeList.length >= 10000){
-                $("#panel").html("Number of nodes: " + nodeList.length + "   Simulation complete. Press SPACE to simulate again...");
+                $("#panel").html("Number of nodes: " + nodeList.length + "   Simulation complete. Click anywhere to simulate again...");
                 clearInterval(interval);
                 interval = null;
             }
