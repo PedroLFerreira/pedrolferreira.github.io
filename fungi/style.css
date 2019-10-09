@@ -1,6 +1,7 @@
 * {
     padding: 0;
     margin: 0;
+    text-align: center;
 }
 
 body {
@@ -20,6 +21,7 @@ h1 {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -34,7 +36,9 @@ a {
     color:black;
 }
 
-
+footer {
+    padding-bottom: 10px;
+}
 
 
 

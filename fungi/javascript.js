@@ -1,7 +1,7 @@
 
 var c = $("#canvas");
 var ctx = c[0].getContext("2d");
-var width = $(window).width()*3/4;
+var width = $(window).width();
 var height = $(window).height()*3/4;
 
 var originPoint = [width/2,height/2];
