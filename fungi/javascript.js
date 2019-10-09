@@ -1,18 +1,19 @@
 
 var c = $("#canvas");
 var ctx = c[0].getContext("2d");
-var width = $(window).width();
-var height = $(window).height();
+var width = $(window).width()*3/4;
+var height = $(window).height()*3/4;
 
 var originPoint = [width/2,height/2];
 var originPoint2 = [width/2,height/2+5];
 
-const growthStep = 2;
-const growthNoise = 1;
-const R = 10;
-const N_branch = 5;
-const P_branch = 0.9;
-const neighbour_dir_influence = 1;
+var growthStep = 2;
+var growthNoise = 1;
+var R = 10;
+var N_branch = 10;
+var P_branch = 0.4;
+var neighbour_dir_influence = 1;
+var MAX_NODES = 10000;
 
 class Node {
     constructor(id,parent_id,position,isTip=true){
@@ -159,7 +160,7 @@ $(function(){
 })
 
 var interval = null;
-$(document).click(function (e) {
+$("#canvas").click(function (e) {
     if(interval == null){
         ctx.clearRect(0, 0, width, height);
         nodeList = [new Node(0,1,originPoint), new Node(1,0,originPoint2)];
@@ -169,8 +170,8 @@ $(document).click(function (e) {
             iterate();
             $("#panel").html("Number of nodes: " + nodeList.length);
             // console.log("Number of nodes: ", nodeList.length);
-            if(nodeList.length >= 10000){
-                $("#panel").html("Number of nodes: " + nodeList.length + "   Simulation complete. Click anywhere to simulate again...");
+            if(nodeList.length >= MAX_NODES){
+                $("#panel").html("Number of nodes: " + nodeList.length + "   Simulation complete. Click below to simulate again...");
                 clearInterval(interval);
                 interval = null;
             }
@@ -179,3 +180,37 @@ $(document).click(function (e) {
     }
 });
 
+$("#max_nodes_slider").on("change",function(){
+    $("#max_nodes").html($("#max_nodes_slider").val());
+    MAX_NODES = $("#max_nodes_slider").val();
+})
+
+$("#growth_step_slider").on("change",function(){
+    $("#growth_step").html($("#growth_step_slider").val());
+    growthStep = $("#growth_step_slider").val();
+})
+
+$("#growth_noise_slider").on("change",function(){
+    $("#growth_noise").html($("#growth_noise_slider").val());
+    growthNoise = $("#growth_noise_slider").val();
+})
+
+
+
+
+$("#R_slider").on("change",function(){
+    $("#R").html($("#R_slider").val());
+    R = $("#R_slider").val();
+})
+$("#N_branch_slider").on("change",function(){
+    $("#N_branch").html($("#N_branch_slider").val());
+    N_branch = $("#N_branch_slider").val();
+})
+$("#P_branch_slider").on("change",function(){
+    $("#P_branch").html($("#P_branch_slider").val());
+    P_branch = $("#P_branch_slider").val();
+})
+$("#neighbour_dir_influence_slider").on("change",function(){
+    $("#neighbour_dir_influence").html($("#neighbour_dir_influence_slider").val());
+    neighbour_dir_influence = $("#neighbour_dir_influence_slider").val();
+})

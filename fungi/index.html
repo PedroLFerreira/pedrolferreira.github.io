@@ -12,12 +12,60 @@
  </head>
  <body>
      <h1>Neighbour-sensing Model of Fungal Growth</h1>
-     <h5>
-        Based on the work of Meškauskas, A., Fricker, M. D. & Moore, D., 2004. <a target="_blank" href="http://www.davidmoore.org.uk/CyberWEB/images_2016/Manuscripts/Meskauskas_etal_simulating_coloniesNS02.pdf" >Simulating colonial growth of fungi with the Neighbour-Sensing model of hyphal growth. Mycological Research 108, 1241-1256.</a>
-     </h5>
-     <div id="panel">Click anywhere to start the simulation...</div>
-     <canvas id="canvas"></canvas>
+     <div id="options">
+         <div class="option-item" >
+            <div>Maximum Nodes</div>
+            <input id="max_nodes_slider" type="range" min="500" max="50000" value="10000">
+            <div id="max_nodes">10000</div>
+         </div>
 
+         <div class="option-item" >
+            <div>Growth Velocity</div>
+            <input id="growth_step_slider" type="range" min="1" max="10" value="2" step="0.01">
+            <div id="growth_step">2</div>
+        </div>
+
+        <div class="option-item" >
+            <div>Growth Noise</div>
+            <input id="growth_noise_slider" type="range" min="0" max="5" value="1" step="0.01">
+            <div id="growth_noise">1</div>
+        </div>
+
+        <div class="option-item" >
+            <div>R</div>
+            <input id="R_slider" type="range" min="10" max="50" value="10" step="0.01">
+            <div id="R">10</div>
+        </div>
+
+        <div class="option-item" >
+            <div>N_branch</div>
+            <input id="N_branch_slider" type="range" min="0" max="50" value="10" step="1">
+            <div id="N_branch">1</div>
+        </div>
+
+        <div class="option-item" >
+            <div>P_branch</div>
+            <input id="P_branch_slider" type="range" min="0" max="1" value="0.4" step="0.01">
+            <div id="P_branch">0.4</div>
+        </div>
+
+        <div class="option-item" >
+            <div>Neighbour Direction Influence</div>
+            <input id="neighbour_dir_influence_slider" type="range" min="0" max="5" value="1" step="0.01">
+            <div id="neighbour_dir_influence">1</div>
+        </div>
+
+
+     </div>
+
+     <div id="panel">Click below to start the simulation...</div>
+     <canvas id="canvas"></canvas>
+     <h4>
+        Based on the work of <a target="_blank" href="http://www.davidmoore.org.uk/CyberWEB/images_2016/Manuscripts/Meskauskas_etal_simulating_coloniesNS02.pdf" >Meškauskas, A., Fricker, M. D. & Moore, D., 2004.</a>
+    </h4>
+    <h4>
+        By <a href="http://www.tetraktyz.github.io" target="_blank" rel="noopener noreferrer">Pedro Ferreira</a>
+    </h4>
      <script src="javascript.js"></script>
  </body>
  </html>
