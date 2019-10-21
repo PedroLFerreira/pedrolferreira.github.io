@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pedro Ferreira</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head> 
+<body>
+    <div class="profile">
+        <header>
+            <div class="header-menu">
+                <div class="header-menu-item">
+                    <a href="#about" rel="noopener noreferrer">About</a>
+                </div>
+                <div class="header-menu-item">
+                    <a href="#blog" rel="noopener noreferrer">Blog</a>
+                </div>
+                <div class="header-menu-item">
+                    <a href="#publications" rel="noopener noreferrer">Publications</a>
+                </div>
+            </div>
+        </header>
+
+        <div class="profile-div" id="about">
+            <img id="profile-image" src="0.jpg" alt="profile image">
+            <h1 class="profile-name">Pedro Ferreira</h1>
+            <h4 class="profile-titles">MSc Applied Math, BSc Physics</h2>
+
+            <div class="bio-summary" id="bio">
+                <!-- <h2 class="bio-title">Bio</h2> -->
+                <!-- <div class="bio-text">
+                    I'm a MSc graduate from Instituto Superior Técnico (University of Lisbon), a top-ranked university in Portugal.
+                    My interests lie in understanding how the brain works and how that knowledge can be used to build better algorithms.
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <main>
+        <div class="blog-summary" id="blog">
+            <h2 class="blog-title">Blog</h2>
+            <div class="blog-entries">
+                <div class="blog-entry">
+                    <a href="http://tetraktyz.github.io/fungi" target="_blank" rel="noopener noreferrer">Growing Fungal Networks</a>
+                </div>
+            </div>
+        </div>
+        <div class="publications-summary" id="publications">
+            <h2 class="publications-title">Publications</h2>
+            <div class="publications-entries">
+                <div class="pub-item">
+                    <div class="pub-item-header">
+                        <div class="pub-title">Coordination among Autonomous Agents with Cognitive Biases and Theory of Mind, AAAI20</div>
+                        <div class="pub-authors"><strong>Ferreira P</strong>, Pequito S, Santos F</div>
+                    </div>
+                    <div class="pub-item-collapsable">
+                        <div class="pub-abstract">
+                                Theory of mind models the way humans handle social
+                                situations by managing internal models of others
+                                in order to predict their actions. A particular recursive
+                                scheme that captures such behavior is the level-k
+                                model where behavior is hierarchically arranged in increasing
+                                sophistication level such that a level-k behavior
+                                is the best response against a level-(k-1) policy of
+                                the other agent. Expected utility theory (EUT) is commonly
+                                used in decision-making models together with
+                                the level-k model, as a theory of value. However, EUT
+                                is known to not capture biases due to human interpretations
+                                of risk associated with decisions and their value.
+                                <br><br>
+                                In this work, we develop a framework that enables us
+                                to consider level-k recursive theory of mind where biases
+                                and risk associated with decisions are captured by
+                                cumulative prospect theory (CPT), a risk-sensitive theory
+                                of value. We show that risk-sensitive agents (i.e.
+                                using CPT) are better at coordinating, with increasing
+                                sophistication level k, compared to risk-neutral agents
+                                (i.e. using EUT). 
+                                <br><br>
+                                We find that both settings suggest that
+                                the reason why humans are good at coordination may
+                                stem from the fact that we are cognitively biased to
+                                do so. As a consequence, we might be able to leverage
+                                the proposed framework to equip artificial intelligence
+                                decision-making schemes with human-like reasoning.
+                        </div>
+                        <div class="pub-footer">
+                            <div class="pub-link">[<a href="http://" target="_blank" rel="noopener noreferrer">PDF</a>]</div>
+                            <div class="pub-date">October 2019</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <div class="pub-item-header">
+                        <div class="pub-title">The Fall of Homo Economicus, MSc Thesis</div>
+                        <div class="pub-authors"><strong>Ferreira P</strong></div>
+                    </div>
+                    <div class="pub-item-collapsable">
+                        <div class="pub-abstract">
+                                The cognitive mechanics of human decision-making is affected by a large set of high-level processes.
+                                Some of these processes, called cognitive biases, are often regarded as failures, since they prescribe
+                                behavior which is not deemed as rational. Furthermore, in social settings, humans employ a process
+                                known as theory of mind which enables them to create and manage a dynamic model of the mental
+                                states of others, allowing for the prediction of future actions to better inform current behavior. 
+                                <br><br>
+                                Can cognitive biases promote coordination? Can increasingly sophisticated levels of theory of mind promote
+                                coordination? In this thesis, we answer these questions by showing how coordination among
+                                agents measuring value using the prescriptive Expected Utility Theory (EUT) differs from the coordination
+                                among agents measuring value using the descriptive Cumulative Prospect Theory (CPT), in two
+                                experimental settings: a normal-form stag hunt game allows us to study how coordination differs when
+                                agents use EUT and CPT as theories of value, while a Markov game of stag hunt focuses on studying the
+                                effects of increasingly sophisticated policies among both EUT- and CPT-agents, using the recursive theory
+                                of mind level-k model that captures bounded rationality. 
+                                <br><br>
+                                We show that CPT-agents are better able to coordinate in both experiments, compared to EUT-agents. 
+                                Furthermore, in the Markov stag hunt, while
+                                coordination with both EUT and CPT stand to gain from increasingly sophisticated policies, CPT-agents
+                                do not require as much sophistication as EUT-agents do to coordinate to the same extent. We can thus
+                                conclude that, while some of these cognitive biases are viewed as failures in individual decision-making,
+                                they actually make social interaction easier.
+                        </div>
+                        <div class="pub-footer">
+                            <div class="pub-link">[<a href="http://" target="_blank" rel="noopener noreferrer">PDF</a>]</div>
+                            <div class="pub-date">October 2019</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="social-list">
+            <div class="social-item" id="email"><a href="mailto:mainminmax@gmail.com">Mail</a></div>
+            <div class="social-item" id="github"><a href="http://tetraktyz.github.io" target="_blank" rel="noopener noreferrer">Github</a></div>
+            <div class="social-item" id="curriculum"><a href="http://tetraktyz.github.io/docs/CV" target="_blank" rel="noopener noreferrer">CV</a></div>
+        </div>
+        <div class="copyright">©2019 Pedro Ferreira</div>
+    </footer>
+
+
+
+
+    <script>
+
+        var pub_item_header_inactive_color = "rgb(230,230,230)"
+        var pub_item_header_active_color = "rgb(255, 136, 0)"
+
+        $(".pub-item-collapsable").hide() // Close all
+        $(".pub-item-header").css("background-color",pub_item_header_inactive_color)
+        
+        $(".pub-item-header").hover(function () {
+            $(this).css("background-color", pub_item_header_active_color)
+        },function() {
+            var isHidden = $($(this.parentElement).children()[1]).is(":hidden")
+            if(isHidden){
+                $(this).css("background-color",pub_item_header_inactive_color)
+            }
+        })
+
+        $(".pub-item-header").click(function(){
+            var isHidden = $($(this.parentElement).children()[1]).is(":hidden")
+            $(".pub-item-collapsable").slideUp(400) // Close all
+            $(".pub-item-header").css("background-color",pub_item_header_inactive_color)
+
+            if(isHidden){
+                // $($(this.parentElement).children()[1]).slideUp(400) // Open clicked if closed
+                $($(this.parentElement).children()[1]).slideToggle(400);
+                $(this).css("background-color", pub_item_header_active_color)
+            }
+            else {
+                $(this).css("background-color",pub_item_header_inactive_color)
+            }
+        })
+    </script>
+</body>
+</html>
