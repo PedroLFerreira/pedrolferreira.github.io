@@ -33,7 +33,6 @@ main {
 
 .header-menu-item a {
     text-decoration: none;
-    color:white;
 }
 
 .profile-div {
@@ -47,8 +46,8 @@ main {
     /* background-color: #cccccc; */
 }
 
-.profile-name, .profile-titles {
-    color: white;
+.profile-name, .profile-titles, .header-menu-item a {
+    /* color: white; */
 }
 
 .profile-titles {
@@ -57,7 +56,7 @@ main {
 
 .profile {
     /* background-image: url('../vector-bg.jpg'); */
-    background-color: rgb(255, 136, 0);
+    background-color: rgb(131, 243, 97);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -66,7 +65,8 @@ main {
 }
 
 .bio-text {
-    color: grey;
+    text-align: justify;
+    /* color: grey; */
 }
 
 footer {
@@ -98,7 +98,7 @@ footer .copyright {
 
 #profile-image {
     border-radius: 50%;
-    border: solid rgb(255, 255, 255) 7px
+    border: solid white 6px
 }
 
 .publications-entries {
@@ -123,6 +123,7 @@ footer .copyright {
 }
 
 .pub-item-header {
+    border-radius: 2px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -130,6 +131,8 @@ footer .copyright {
     padding: 15px;
     flex-wrap: wrap;
     cursor: pointer;
+
+    transition: all 0.2s ease-in-out
 }
 
 .pub-item-header:hover {
