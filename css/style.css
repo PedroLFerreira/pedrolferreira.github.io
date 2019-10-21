@@ -119,7 +119,7 @@ footer .copyright {
     border-radius: 2px;
     /* width: 100%; */
     /* height: 250px; */
-    transition: all 0.4s ease-in-out;
+    transition: all 0.1s ease-in-out;
 }
 
 .pub-item-header {
@@ -132,7 +132,7 @@ footer .copyright {
     flex-wrap: wrap;
     cursor: pointer;
 
-    transition: all 0.2s ease-in-out
+    transition: all 0.1s ease-in-out
 }
 
 .pub-item-header:hover {
@@ -159,5 +159,5 @@ footer .copyright {
 }
 
 .pub-link, .pub-link a {
-    color: tomato;
+    color: red;
 }
