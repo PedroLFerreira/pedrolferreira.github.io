@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Replicator Dynamics</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Replicator Dynamics</h1>
+    Consider a finite or infinite population of individuals whose strategies can be categorized into a finite set \(S={1,...,n}\).
+    <br>
+    Let \(x=(x_1,...,x_n)\) be a vector containing the fractions of individuals with each strategy in \(S\).
+    <br>
+    The fraction of individuals \(x_i\) using strategy \(i\) can be modelled using the following differential equation:
+    \[\dot{x}_i = x_i\left(f_i(x) - \bar{f}(x)\right),\]
+    where \(f_i(x)\) is the fitness of individuals using strategy \(i \in S\) which depends on the fractions of individuals with each strategy in \(S\), and \(\bar{f}(x)=\sum_{i\in S} f_i(x)x_i\) is the average fitness of the entire population.
+
+</body>
+</html>

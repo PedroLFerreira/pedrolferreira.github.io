@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Neural Dynamics</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <h3>Integrate-and-Fire Model</h3>
+    
+    \[i=C_m{dV_m\over dt}\]
+
+    <h4>Derivation:</h4>
+    \[Q=CV\]
+    \[i={dQ \over dt} = C {dV \over dt}\]
+
+    <h4>Parameters:</h4>
+    <ul>
+        <li>Threshold Voltage \(V_{th}\)</li>
+        <li>Resting Voltage \(V_{rest}\)</li>
+        <li>Spiking Voltage \(V_{spike}\)</li>
+        <li>Membrane Conductance \(C_m\)</li>
+    </ul>
+    
+    <div>
+        <div id="v1">\(V_m=\) <s>asd</s> </div>
+    </div>
+
+    <h3>Hodgkin-Huxley Model</h3>
+
+    \[i = C_m {dV_m \over dt} + \sum_i g_i(V_m-V_i)\]
+
+    \[i = C_m{dV_m \over dt} + \bar{g}_K n^4(V_m - V_K) + \bar{g}_{Na} m^3h(V_m - V_{Na}) + \bar{g}_l(V_m-V_l)\]
+
+    \[{dn \over dt}=\alpha_n(V_m)(1-n) - \beta_n(V_m)n\]
+    \[{dm \over dt}=\alpha_m(V_m)(1-m) - \beta_m(V_m)m\]
+    \[{dh \over dt}=\alpha_h(V_m)(1-h) - \beta_h(V_m)h\]
+
+    \[\alpha_n(V_m) = {0.01(10-V_m) \over \exp\left({10-V_m \over 10}\right)-1}\]
+    \[\alpha_m(V_m) = {0.1(25-V_m) \over \exp\left({25-V_m \over 10}\right)-1}\]
+    \[\alpha_h(V_m) = {0.07\exp\left({-V_m \over 20}\right)}\]
+
+    \[\beta_n(V_m) = 0.125\exp\left(-V_m \over 80\right)\]
+    \[\beta_m(V_m) = 4\exp\left(-V_m \over 18\right)\]
+    \[\beta_h(V_m) = {1 \over \exp\left(30-V_m \over 10\right) + 1}\]
+
+    <script>
+        var neuron = $("#v1")
+        neuron.css("background-color","grey")
+        neuron.css("border-radius","2px")
+
+        const V_rest = -65
+        const V_th = -50
+        const V_spike = 30
+        const C_m = 0.5
+        const dt = 0.1
+
+        var v1 = V_rest
+        var input_current = 1
+        
+        function iterate(){
+            if(v1 == V_spike){
+                v1 = V_rest
+                neuron.css("background-color","grey")
+            }
+            v1 += dt*input_current/C_m
+            if(v1>V_th){
+                v1 = V_spike
+                neuron.css("background-color","red")
+            }
+            console.log()
+            neuron.width((v1-V_rest)/(V_spike-V_rest)*100+"%")
+            neuron.html(Math.round(v1)+"mV")
+            console.log(v1)
+        }
+        
+        setInterval(iterate,20)
+
+        
+    </script>
+</body>
+</html>
