@@ -47,7 +47,7 @@ main {
 }
 
 .profile-name, .profile-titles, .header-menu-item a {
-    /* color: white; */
+    color: white;
 }
 
 .profile-titles {
@@ -56,7 +56,7 @@ main {
 
 .profile {
     /* background-image: url('../vector-bg.jpg'); */
-    background-color: rgb(131, 243, 97);
+    background-color: rgb(0, 88, 161);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -137,7 +137,6 @@ footer .copyright {
 
 .pub-item-header:hover {
     /* background-color: rgb(255, 136, 0); */
-
 }
 
 .pub-item-collapsable {
@@ -146,9 +145,6 @@ footer .copyright {
     /* height: 0; */
 }
 
-.pub-title {
-    /* font-style: italic; */
-}
 
 .pub-date {
     padding-right: 10px;

@@ -160,10 +160,14 @@
         
         $(".pub-item-header").hover(function () {
             $(this).css("background-color", pub_item_header_active_color)
+            $(this).children().css("color","white")
+            $(this).children().children().css("color","white");
         },function() {
             var isHidden = $($(this.parentElement).children()[1]).is(":hidden")
             if(isHidden){
                 $(this).css("background-color",pub_item_header_inactive_color)
+                $(this).children().css("color","black")
+                $(this).children().children().css("color","black")
             }
         })
 
@@ -171,14 +175,20 @@
             var isHidden = $($(this.parentElement).children()[1]).is(":hidden")
             $(".pub-item-collapsable").slideUp(400) // Close all
             $(".pub-item-header").css("background-color",pub_item_header_inactive_color)
+            $(".pub-item-header").children().css("color","black")
+            $(".pub-item-header").children().children().css("color","black");
 
             if(isHidden){
                 // $($(this.parentElement).children()[1]).slideUp(400) // Open clicked if closed
                 $($(this.parentElement).children()[1]).slideToggle(400);
                 $(this).css("background-color", pub_item_header_active_color)
+                $(this).children().css("color","white")
+                $(this).children().children().css("color","white")
             }
             else {
                 $(this).css("background-color",pub_item_header_inactive_color)
+                $(this).children().css("color","black")
+                $(this).children().children().css("color","black")
             }
         })
     </script>
