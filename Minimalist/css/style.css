@@ -129,6 +129,7 @@ footer .copyright {
     /* background-color: rgb(157, 235, 255); */
     padding: 15px;
     flex-wrap: wrap;
+    cursor: pointer;
 }
 
 .pub-item-header:hover {
