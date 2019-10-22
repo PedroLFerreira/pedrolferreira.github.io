@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Free Energy Principle</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>The Free Energy Principle</h1>
+    <div class="main-text">
+        <h2>Overview</h2>
+
+        Consider the tuple \( (S,X,A,\Psi,p,q) \) where:
+        <ul>
+            <li>State space \(S\), with \(s\in S\),</li>
+            <li>Input space \(X\), with \(x \in X\),</li>
+            <li>Action space \(A\), with \(a\in A\),</li>
+            <li>Model space \(M\), with \(m \in M\),</li>
+            <li>Generative density \(p(s,x|\psi)\), specified by generative model \(\psi\), and</li>
+            <li>Variational density \(q(s|m)\), parametrized by internal model \(m\).</li>
+        </ul>
+
+
+        The <strong>free energy principle</strong> states that a biological agent alters its internal model \(m \in M\) and action \(a \in A\), in some environment in state \(s \in S\) which can be perceived through sensory input \(x \in X\), in order to minimize \(-\log p(x|\psi)\) -- the agent's <strong>surprise</strong> on sensing \(x\) with generative model \(\psi\).
+        <br><br>
+        Since minimizing surprise directly is difficult, the agent instead finds an upper bound of surprise, the so-called <strong>variational free energy</strong> \(F\), whose minimization is equivalent to minimizing surprise.
+
+        \[ {\underset {\mathrm {\text{free energy}} }{\underbrace {F(x,m)} }}={\underset {\mathrm {energy} }{\underbrace {E_{q}[-\log p(s,x | \psi)]} }}-{\underset {\mathrm {entropy} }{\underbrace {H[q(s|m)]} }}={\underset {\mathrm {surprise} }{\underbrace {-\log p(x | \psi)} }}+{\underset {\mathrm {divergence} }{\underbrace {D_{\mathrm {KL} }[q(s | m )\parallel p(s | x,\psi)]} }}\geq {\underset {\mathrm {surprise} }{\underbrace {-\log p(x| \psi)} }}\]
+
+        In general, this implies a dual minimization with respect to the action and the internal model:
+        \[a = \underset{a\in A}{\operatorname{argmin}} \left\{F(x(a),m)\right\},\]
+        \[m = \underset{m\in M}{\operatorname{argmin}} \left\{F(x(a),m)\right\},\]
+        where it is assumed that the role of action \(a\) is to change sensory input \(x\).
+        <br><br>
+        This can be implemented using, for example, a gradient descent schemes:
+
+        \[\dot{a} = -\eta_a \nabla_a F(x(a),m),\]
+        \[\dot{m} = -\eta_m \nabla_m F(x(a),m),\]
+
+        where \(\eta_a\) and \(\eta_m\) are learning rates relative to the action and the model, respectively.
+
+        
+
+
+
+
+
+        <h2>Variational Free Energy<div style="color:red">UNDER CONSTRUCTION</div></h2>
+        
+        Environment states \(s\) cannot be observed directly and must be inferred by a process of Bayesian inference.
+        <br><br>
+        The goal of the agent is to determine \(p(s|x)\), the probability of environment being in state \(s\) given sensory input \(x\).
+        <br><br>
+        
+        Using Bayes' theorem,
+        
+        \[p(s|x) = {p(x|s)p(s) \over \int_S p(x|s')p(s')ds'}, \tag{1}\]
+        
+        where \(p(s)\) is the prior belief the agent has about the environment before receiving sensory input \(x\),
+        and \(p(x|s)\) is the likelihood that environment in state \(s\) causes an input \(x\) to be sensed.
+        <br><br>
+        In general, a direct calculation of \(p(s|x)\) is intractable because one needs to perform the integration in the denominator.
+        To go around this, we can use <strong>Variational Bayes</strong> to approximate the intractable integral and,
+        consequently, estimate \(p(s|x)\).
+        <br><br>
+        Variational Bayes makes use of an auxiliary probability density that represents the current "best guess" of \(p(s|x)\) -- this is the <strong>variational density</strong> \(q(s|m)\), parameterized by an internal model \(m\).
+        <br>
+        The "difference" between the approximate recognition density \(q(s)\) and the true posterior \(p(s|x)\) can be 
+        described by the Kullback-Liebler divergence as follows:
+        
+        \[D_{KL}\left[q(s|m) \parallel p(s|x,\psi)\right] = \int q(s|m) \log\left({q(s|m) \over p(s|x,\psi)}\right)ds. \tag{2}\]
+        
+        <!-- Estimating \(p(s|x)\) is now reduced to the following optimization problem:
+
+        \[p(s|x) = \underset{q}{\operatorname{argmin}} \left\{D_{KL}\left(q(h)||p(h|o)\right)\right\} \]
+        This tautology is useful if one remembers the relationship between marginal density and joint density, 
+         -->
+        Since \(p(s|x)={p(s,x) \over p(x)}\), the integrand in Equation \((2)\) becomes:
+        
+        \[ q(s) \log\left({q(s) \over p(s|x)}\right) = 
+        <!-- q(v) \log\left({q(v) \over p(v,o)} p(o)\right) =  -->
+        q(s) \log\left({q(s) \over p(s,x)}\right) + q(s)\log p(x).
+        \]
+        
+        This means the KL divergence can be rewritten as follows:
+        
+        \[D_{KL}\left(q(h)||p(h|o)\right) = \int q(h) \log\left({q(h) \over p(h,o)}\right)dh +  \log p(o). \tag{3}\]
+        
+        In contrast to Equation \((2)\), this form of the KL divergence can be directly evaluated because it only
+        depends on the recognition density \(q(h)\), 
+        provided that the agent has a generative model, encoded in the so-called <strong>generative density</strong> \(p(h,o)\), 
+        of how environment states \(h\) and sensory states \(o\) are related.
+        <br><br>
+        The first term in Equation \((3)\) is called the <strong>variational free energy</strong>,
+        
+        \[F(h,o) = \int q(h)\log \left({q(h) \over p(h,o)}\right).\]
+        
+        The neat thing about Equation \((3)\) is that \(\log p(o)\), often refered to as <strong>surprise</strong>, is independent of \(q\),
+        which means that minimizing \(F\) with respect to \(q\) will 
+        also minimize \(D_{KL}\left(q(h)||p(h|o)\right)\) -- the difference between the recognition density and the true posterior.
+        <br><br>
+        Furthermore, since the KL divergence is non-negative, this implies that \(F\geq-\log p(o)\). Thus, variational free energy 
+        provides an upper bound of surprise, allowing an agent to estimate it.
+        
+        <h3>Summary</h3>
+        <ul>
+            <li>
+                Minimizing the variational free energy \(F(h,o)\) with respect to the recognition density \(q\), 
+                given an appropriate generative density \(p(h,o)\), allows an agent to approximate the Bayesian posterior \(p(h|o)\).
+            </li>
+            <li>
+                The variational free energy \(F\) is an upper bound of surprise \(\log p(o)\).
+            </li>
+        </ul>
+        <h2>Perception<div style="color:red">UNDER CONSTRUCTION</div></h2>
+        EXPLAIN HOW q CAN BE PARAMETRIZED BY BRAIN STATES \(s\)
+        <h2>Action<div style="color:red">UNDER CONSTRUCTION</div></h2>
+        Under the free energy principle, action does not appear explicitly in the formulation of the variational free energy 
+        \(F\) but minimises \(F\) by changing sensory data \(o\).
+        In other words, the agent can minimize \(F\) by acting upon the environment, changing the incoming sensory input.
+
+
+
+        <div class="references">
+            <h2>-References-</h2>
+            <ul>
+                <li>Buckley, C.L., et al., <em>The free energy principle for action and perception: A mathematical review</em>. Journal of Mathematical Psychology
+                        (2017), <a href="http://dx.doi.org/10.1016/j.jmp.2017.09.004" target="_blank" rel="noopener noreferrer">http://dx.doi.org/10.1016/j.jmp.2017.09.004</a>.</li>
+            </ul>
+                
+        </div>
+    </div>
+
+    
+</body>
+</html>
