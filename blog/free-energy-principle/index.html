@@ -19,12 +19,13 @@
     <div class="main-text">
         <h2>Overview</h2>
 
-        Consider the tuple \( (S,X,A,\Psi,p,q) \) where:
+        Consider the tuple \( (S,X,A,M,\psi,p,q) \) where:
         <ul>
             <li>State space \(S\), with \(s\in S\),</li>
             <li>Input space \(X\), with \(x \in X\),</li>
             <li>Action space \(A\), with \(a\in A\),</li>
-            <li>Model space \(M\), with \(m \in M\),</li>
+            <li>Internal model space \(M\), with \(m \in M\),</li>
+            <li>Generative model \(\psi\),</li>
             <li>Generative density \(p(s,x|\psi)\), specified by generative model \(\psi\), and</li>
             <li>Variational density \(q(s|m)\), parametrized by internal model \(m\).</li>
         </ul>
@@ -41,7 +42,7 @@
         \[m = \underset{m\in M}{\operatorname{argmin}} \left\{F(x(a),m)\right\},\]
         where it is assumed that the role of action \(a\) is to change sensory input \(x\).
         <br><br>
-        This can be implemented using, for example, a gradient descent schemes:
+        This can be implemented using, for example, a gradient descent scheme:
 
         \[\dot{a} = -\eta_a \nabla_a F(x(a),m),\]
         \[\dot{m} = -\eta_m \nabla_m F(x(a),m),\]
