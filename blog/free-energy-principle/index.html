@@ -19,23 +19,23 @@
     <div class="main-text">
         <h2>Overview</h2>
 
-        Consider the tuple \( (S,X,A,M,\psi,p,q) \) where:
+        Consider the tuple \( (S,X,A,M,g,p,q) \) where:
         <ul>
             <li>State space \(S\), with \(s\in S\),</li>
             <li>Input space \(X\), with \(x \in X\),</li>
             <li>Action space \(A\), with \(a\in A\),</li>
             <li>Internal model space \(M\), with \(m \in M\),</li>
-            <li>Generative model \(\psi\),</li>
-            <li>Generative density \(p(s,x|\psi)\), specified by generative model \(\psi\), and</li>
+            <li>Generative model \(g\),</li>
+            <li>Generative density \(p(s,x|g)\), specified by generative model \(g\), and</li>
             <li>Variational density \(q(s|m)\), parametrized by internal model \(m\).</li>
         </ul>
 
 
-        The <strong>free energy principle</strong> states that a biological agent alters its internal model \(m \in M\) and action \(a \in A\), in some environment in state \(s \in S\) which can be perceived through sensory input \(x \in X\), in order to minimize \(-\log p(x|\psi)\) -- the agent's <strong>surprise</strong> on sensing \(x\) with generative model \(\psi\).
+        The <strong>free energy principle</strong> states that a biological agent alters its internal model \(m \in M\) (the parameters of the so-called variational density \(q\), which approximately describes how the environment generates incoming sensory input) and action \(a \in A\) (which possibly alters sensory input), in some environment in state \(s \in S\) which can be perceived through sensory input \(x \in X\), in order to minimize \(-\log p(x|g)\) -- the agent's <strong>surprise</strong> on sensing \(x\) with generative model \(g\).
         <br><br>
         Since minimizing surprise directly is difficult, the agent instead finds an upper bound of surprise, the so-called <strong>variational free energy</strong> \(F\), whose minimization is equivalent to minimizing surprise.
 
-        \[ {\underset {\mathrm {\text{free energy}} }{\underbrace {F(x,m)} }}={\underset {\mathrm {energy} }{\underbrace {E_{q}[-\log p(s,x | \psi)]} }}-{\underset {\mathrm {entropy} }{\underbrace {H[q(s|m)]} }}={\underset {\mathrm {surprise} }{\underbrace {-\log p(x | \psi)} }}+{\underset {\mathrm {divergence} }{\underbrace {D_{\mathrm {KL} }[q(s | m )\parallel p(s | x,\psi)]} }}\geq {\underset {\mathrm {surprise} }{\underbrace {-\log p(x| \psi)} }}\]
+        \[ {\underset {\mathrm {\text{free energy}} }{\underbrace {F(x,m)} }}={\underset {\mathrm {energy} }{\underbrace {E_{q}[-\log p(s,x | g)]} }}-{\underset {\mathrm {entropy} }{\underbrace {H[q(s|m)]} }}={\underset {\mathrm {surprise} }{\underbrace {-\log p(x | g)} }}+{\underset {\mathrm {divergence} }{\underbrace {D_{\mathrm {KL} }[q(s | m )\parallel p(s | x,g)]} }}\geq {\underset {\mathrm {surprise} }{\underbrace {-\log p(x| g)} }}\]
 
         In general, this implies a dual minimization with respect to the action and the internal model:
         \[a = \underset{a\in A}{\operatorname{argmin}} \left\{F(x(a),m)\right\},\]
@@ -129,7 +129,8 @@
         \(F\) but minimises \(F\) by changing sensory data \(o\).
         In other words, the agent can minimize \(F\) by acting upon the environment, changing the incoming sensory input.
 
-
+        \[x = x(a)\]
+        \[{dE(x,\mu) \over da } = {dx \over da} {\partial E (x,\mu)\over \partial x}\]
 
         <div class="references">
             <h2>-References-</h2>
@@ -137,7 +138,6 @@
                 <li>Buckley, C.L., et al., <em>The free energy principle for action and perception: A mathematical review</em>. Journal of Mathematical Psychology
                         (2017), <a href="http://dx.doi.org/10.1016/j.jmp.2017.09.004" target="_blank" rel="noopener noreferrer">http://dx.doi.org/10.1016/j.jmp.2017.09.004</a>.</li>
             </ul>
-                
         </div>
     </div>
 
