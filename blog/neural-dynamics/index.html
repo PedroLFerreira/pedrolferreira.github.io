@@ -53,13 +53,17 @@
     \[\beta_m(V_m) = 4\exp\left(-V_m \over 18\right)\]
     \[\beta_h(V_m) = {1 \over \exp\left(30-V_m \over 10\right) + 1}\]
 
+    <div>
+        <div id="v2">\(V_m=\) <s>asd</s> </div>
+    </div>
+
     <script>
         var neuron = $("#v1")
         neuron.css("background-color","grey")
         neuron.css("border-radius","2px")
 
-        const V_rest = -65
-        const V_th = -50
+        const V_rest = -70
+        const V_th = -55
         const V_spike = 30
         const C_m = 0.5
         const dt = 0.1
@@ -77,15 +81,86 @@
                 v1 = V_spike
                 neuron.css("background-color","red")
             }
-            console.log()
+            // console.log()
             neuron.width((v1-V_rest)/(V_spike-V_rest)*100+"%")
             neuron.html(Math.round(v1)+"mV")
-            console.log(v1)
+            // console.log(v1)
         }
         
         setInterval(iterate,20)
 
         
     </script>
+
+    <script>
+        var HH_neuron = $("#v2")
+        HH_neuron.css("background-color","grey")
+        HH_neuron.css("border-radius","2px")
+
+        var HH_i = 10
+
+        var HH_V = -70
+        var HH_n = 0
+        var HH_m = 0
+        var HH_h = 0
+
+        var HH_C_m = 1
+
+        var g_K = 36
+        var g_Na = 120
+        var g_l = 0.3
+
+        var V_K = -12
+        var V_Na = 115
+        var V_l = 10.613
+
+        var HH_dt = 0.01
+
+        function alpha_n(v){
+            return 0.01*(10-v)/( Math.exp((10-v)/ 10)-1)
+        }
+        function alpha_m(v){
+            return 0.1*(25-v)/( Math.exp((25-v)/ 10)-1)
+        }
+        function alpha_h(v){
+            return 0.07*Math.exp(-v/20)
+        }
+
+        function beta_n(v){
+            return 0.125*Math.exp(-v/80)
+        }
+        function beta_m(v){
+            return 4*Math.exp(-v/18)
+        }
+        function beta_h(v){
+            return 1/(Math.exp((30-v) / 10) + 1)
+        }
+
+        function HH_iterate(){
+            HH_n += HH_dt*(alpha_n(HH_V)*(1-HH_n) - beta_n(HH_V)*HH_n)
+            HH_m += HH_dt*(alpha_m(HH_V)*(1-HH_m) - beta_m(HH_V)*HH_m)
+            HH_h += HH_dt*(alpha_h(HH_V)*(1-HH_h) - beta_h(HH_V)*HH_h)
+
+            HH_V += HH_dt/HH_C_m*(HH_i - g_K*HH_n*HH_n*HH_n*HH_n*(HH_V - V_K) - g_Na*HH_m*HH_m*HH_m*HH_h*(HH_V - V_Na) - g_l*(HH_V - V_l))
+            
+            console.log(HH_n)
+            console.log(HH_m)
+            console.log(HH_h)
+            console.log(HH_V)
+
+            HH_neuron.width((HH_V-V_rest)/(100-V_rest)*100+"%")
+            HH_neuron.html(Math.round(HH_V)+"mV")
+
+            if(HH_V > V_th){
+                HH_neuron.css("background-color","red")
+            }
+            else{
+                HH_neuron.css("background-color","grey")
+            }
+        }
+
+        setInterval(HH_iterate,1)
+    </script>
+
 </body>
 </html>
