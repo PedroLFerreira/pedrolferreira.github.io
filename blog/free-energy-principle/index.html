@@ -89,7 +89,7 @@
         The "difference" between the approximate recognition density \(q(s)\) and the true posterior \(p(s|x)\) can be 
         described by the Kullback-Liebler divergence as follows:
         
-        \[D_{KL}\left[q(s) \parallel p(s|x)\right] = \int q(s) \log\left({q(s) \over p(s|x)}\right)ds. \tag{2}\]
+        \[D_{KL}\left[q(s) \parallel p(s|x)\right] = \int_S q(s) \log\left({q(s) \over p(s|x)}\right)ds. \tag{2}\]
         
         <!-- Estimating \(p(s|x)\) is now reduced to the following optimization problem:
 
@@ -105,7 +105,7 @@
         
         This means the KL divergence can be rewritten as follows:
         
-        \[D_{KL}\left[q(s)||p(s|x)\right] = \int q(s) \log\left({q(s) \over p(s,x)}\right)ds +  \log p(x). \tag{3}\]
+        \[D_{KL}\left[q(s)||p(s|x)\right] = \int_S q(s) \log\left({q(s) \over p(s,x)}\right)ds +  \log p(x). \tag{3}\]
         
         In contrast to Equation \((2)\), this form of the KL divergence can be directly evaluated because it only
         depends on the recognition density \(q(s)\), 
@@ -114,7 +114,7 @@
         <!-- <br><br> -->
         The first term in Equation \((3)\) is called the <strong>variational free energy</strong>,
         
-        \[F(x,q) = \int q(x)\log \left({q(x) \over p(x,s)}\right).\]
+        \[F(x,q) = \int_S q(s)\log \left({q(s) \over p(x,s)}\right)ds.\]
         
         The neat thing about Equation \((3)\) is that \(\log p(x)\), the negative surprise, is independent of \(q\),
         which means that minimizing \(F\) with respect to \(q\) will 
