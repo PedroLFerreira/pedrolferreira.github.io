@@ -14,40 +14,52 @@
 
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body> 
     <h1>The Free Energy Principle</h1>
     <div class="main-text">
         <h2>Overview</h2>
 
-        Consider the tuple \( (S,X,A,M,g,p,q) \) where:
+        Imagine an agent in an environment. To understand the free energy principle, consider the separation between the <strong>brain</strong> of the agent and the <strong>body</strong> of the agent. The agent itself is composed of the cognitive part only, while body of the agent is a part of the environment which the agent, through the decision-making process in the brain, can directly act upon. In other words, the agent is only a source of cognition and the body the part of the environment that the agent has direct access to change.
+        <br><br>
+        Informally, the <strong>free energy principle</strong> states that such an agent changes its internal model of the environment and, at the same time, acts to change the environment, in order to minimize surprise.
+        <br><br>
+        Since surprise is an ill-defined quantity in an informal setting, a more formal explanation follows:
+        <br><br>
+        Consider the tuple \( (S,A,X,p,q) \) where:
         <ul>
             <li>State space \(S\), with \(s\in S\),</li>
-            <li>Input space \(X\), with \(x \in X\),</li>
             <li>Action space \(A\), with \(a\in A\),</li>
-            <li>Internal model space \(M\), with \(m \in M\),</li>
-            <li>Generative model \(g\),</li>
-            <li>Generative density \(p(s,x|g)\), specified by generative model \(g\), and</li>
-            <li>Variational density \(q(s|m)\), parametrized by internal model \(m\).</li>
+            <li>Input space \(X\), with \(x \in X\),</li>
+            <li>Generative density \(p(s,x)\), and</li>
+            <li>Recognition density \(q(s)\).</li>
         </ul>
-
-
-        The <strong>free energy principle</strong> states that a biological agent alters its internal model \(m \in M\) (the parameters of the so-called variational density \(q\), which approximately describes how the environment generates incoming sensory input) and action \(a \in A\) (which possibly alters sensory input), in some environment in state \(s \in S\) which can be perceived through sensory input \(x \in X\), in order to minimize \(-\log p(x|g)\) -- the agent's <strong>surprise</strong> on sensing \(x\) with generative model \(g\).
+        
+        The environment can be in one of the <strong>states</strong> \(s\ \in S \), which are not directly observable to the agent.
+        The agent instead manages an internal model of the environment as a probability density function \(q\) (the so-called <strong>recognition density</strong>) and updates it using incoming sensory information. In other words, the agent receives an <strong>input</strong> \(x \in X\) from the environment and uses Bayes theorem to update \(q\).
+        Furthermore, the agent chooses <strong>actions</strong> \(a \in A\), (e.g. move its eyes or grab something with its hand) to alter the environment and, consequently, its sensory input \(x=x(a)\).
         <br><br>
-        Since minimizing surprise directly is difficult, the agent instead finds an upper bound of surprise, the so-called <strong>variational free energy</strong> \(F\), whose minimization is equivalent to minimizing surprise.
+        The <strong>free energy principle</strong> states that the agent does all this in order to minimize its <strong>surprise</strong>, defined as \(-\log p(x(a))\).
 
-        \[ {\underset {\mathrm {\text{free energy}} }{\underbrace {F(x,m)} }}={\underset {\mathrm {energy} }{\underbrace {E_{q}[-\log p(s,x | g)]} }}-{\underset {\mathrm {entropy} }{\underbrace {H[q(s|m)]} }}={\underset {\mathrm {surprise} }{\underbrace {-\log p(x | g)} }}+{\underset {\mathrm {divergence} }{\underbrace {D_{\mathrm {KL} }[q(s | m )\parallel p(s | x,g)]} }}\geq {\underset {\mathrm {surprise} }{\underbrace {-\log p(x| g)} }}\]
+        <br><br>
 
+        Since minimizing surprise directly is difficult, the agent instead finds an upper bound of surprise, the so-called <strong>variational free energy</strong> \(F\), whose minimization is consequently equivalent to minimizing surprise:
+
+        \[ {\underset {\mathrm {\text{free energy}} }{\underbrace {F(x(a),q)} }}={\underset {\mathrm {energy} }{\underbrace {\mathbb{E}_{s \sim q(\cdot)}[-\log p(s,x(a))]} }}-{\underset {\mathrm {entropy} }{\underbrace {H[q(s)]} }}={\underset {\mathrm {surprise} }{\underbrace {-\log p(x(a))} }}+{\underset {\mathrm {divergence} }{\underbrace {D_{\mathrm {KL} }[q(s)\parallel p(s | x(a))]} }}\geq {\underset {\mathrm {surprise} }{\underbrace {-\log p(x)} }},\]
+
+        where \(\mathbb{E}_{s \sim q(\cdot)}\) is the expected value operator conditioned on the internal model \(q\), \(H[q(s)] = - \int_{S} q(s) \log q(s) ds \) is the entropy of the internal model, and \(p(s,x)\) is the so-called <strong>generative density</strong> and it is yet another probability distribution that is managed by the agent to represent the causal nature between the environment state and the sensory input.
+
+        <br><br>
         In general, this implies a dual minimization with respect to the action and the internal model:
-        \[a = \underset{a\in A}{\operatorname{argmin}} \left\{F(x(a),m)\right\},\]
-        \[m = \underset{m\in M}{\operatorname{argmin}} \left\{F(x(a),m)\right\},\]
-        where it is assumed that the role of action \(a\) is to change sensory input \(x\).
+        \[a = \underset{a\in A}{\operatorname{argmin}} \left\{F(x(a),q)\right\},\]
+        \[q = \underset{q}{\operatorname{argmin}} \left\{F(x(a),q)\right\}.\]
+        
         <br><br>
-        This can be implemented using, for example, a gradient descent scheme:
+        If we assume that \(q\) is parameterized by parameters \(m\), such that \( q(s) = q(s|m)\), then the minimization can be implemented using, for example, a gradient descent scheme:
 
         \[\dot{a} = -\eta_a \nabla_a F(x(a),m),\]
         \[\dot{m} = -\eta_m \nabla_m F(x(a),m),\]
 
-        where \(\eta_a\) and \(\eta_m\) are learning rates relative to the action and the model, respectively.
+        where \(\eta_a\) and \(\eta_m\) are learning rates relative to the action and to the parameters of the internal model, respectively.
 
         
 
@@ -55,11 +67,10 @@
 
 
 
-        <h2>Variational Free Energy<div style="color:red">UNDER CONSTRUCTION</div></h2>
+        <h2>Deriving Variational Free Energy</h2>
         
-        Environment states \(s\) cannot be observed directly and must be inferred by a process of Bayesian inference.
-        <br><br>
-        The goal of the agent is to determine \(p(s|x)\), the probability of environment being in state \(s\) given sensory input \(x\).
+        Environment states \(s\) cannot be observed directly and, as such, they must be inferred by a process of Bayesian inference. The agent must then determine \(p(s|x)\), the probability of environment being in state \(s\) given sensory input \(x\).
+
         <br><br>
         
         Using Bayes' theorem,
@@ -68,17 +79,17 @@
         
         where \(p(s)\) is the prior belief the agent has about the environment before receiving sensory input \(x\),
         and \(p(x|s)\) is the likelihood that environment in state \(s\) causes an input \(x\) to be sensed.
-        <br><br>
+        <!-- <br><br> -->
         In general, a direct calculation of \(p(s|x)\) is intractable because one needs to perform the integration in the denominator.
         To go around this, we can use <strong>Variational Bayes</strong> to approximate the intractable integral and,
         consequently, estimate \(p(s|x)\).
         <br><br>
-        Variational Bayes makes use of an auxiliary probability density that represents the current "best guess" of \(p(s|x)\) -- this is the <strong>variational density</strong> \(q(s|m)\), parameterized by an internal model \(m\).
-        <br>
+        Variational Bayes makes use of an auxiliary probability density that represents the current "best guess" of \(p(s|x)\) -- this is the <strong>recognition density</strong> \(q(s)\)
+        <!-- <br> -->
         The "difference" between the approximate recognition density \(q(s)\) and the true posterior \(p(s|x)\) can be 
         described by the Kullback-Liebler divergence as follows:
         
-        \[D_{KL}\left[q(s|m) \parallel p(s|x,\psi)\right] = \int q(s|m) \log\left({q(s|m) \over p(s|x,\psi)}\right)ds. \tag{2}\]
+        \[D_{KL}\left[q(s) \parallel p(s|x)\right] = \int q(s) \log\left({q(s) \over p(s|x)}\right)ds. \tag{2}\]
         
         <!-- Estimating \(p(s|x)\) is now reduced to the following optimization problem:
 
@@ -94,36 +105,45 @@
         
         This means the KL divergence can be rewritten as follows:
         
-        \[D_{KL}\left(q(h)||p(h|o)\right) = \int q(h) \log\left({q(h) \over p(h,o)}\right)dh +  \log p(o). \tag{3}\]
+        \[D_{KL}\left[q(s)||p(s|x)\right] = \int q(s) \log\left({q(s) \over p(s,x)}\right)ds +  \log p(x). \tag{3}\]
         
         In contrast to Equation \((2)\), this form of the KL divergence can be directly evaluated because it only
-        depends on the recognition density \(q(h)\), 
-        provided that the agent has a generative model, encoded in the so-called <strong>generative density</strong> \(p(h,o)\), 
-        of how environment states \(h\) and sensory states \(o\) are related.
-        <br><br>
+        depends on the recognition density \(q(s)\), 
+        provided that the agent has a generative model, encoded in the so-called <strong>generative density</strong> \(p(s,x)\), 
+        of how environment states \(s\) and sensory states \(x\) are related.
+        <!-- <br><br> -->
         The first term in Equation \((3)\) is called the <strong>variational free energy</strong>,
         
-        \[F(h,o) = \int q(h)\log \left({q(h) \over p(h,o)}\right).\]
+        \[F(x,q) = \int q(x)\log \left({q(x) \over p(x,s)}\right).\]
         
-        The neat thing about Equation \((3)\) is that \(\log p(o)\), often refered to as <strong>surprise</strong>, is independent of \(q\),
+        The neat thing about Equation \((3)\) is that \(\log p(x)\), the negative surprise, is independent of \(q\),
         which means that minimizing \(F\) with respect to \(q\) will 
-        also minimize \(D_{KL}\left(q(h)||p(h|o)\right)\) -- the difference between the recognition density and the true posterior.
+        also minimize \(D_{KL}\left[q(s)||p(s|x)\right]\) -- the difference between the recognition density and the true posterior.
         <br><br>
-        Furthermore, since the KL divergence is non-negative, this implies that \(F\geq-\log p(o)\). Thus, variational free energy 
+        Furthermore, since the KL divergence is non-negative (by the virtue of <a href="https://en.wikipedia.org/wiki/Gibbs%27_inequality" target="_blank" rel="noopener noreferrer">Gibb's inequality</a>), this implies that \(F\geq-\log p(x)\). Thus, variational free energy 
         provides an upper bound of surprise, allowing an agent to estimate it.
         
         <h3>Summary</h3>
         <ul>
             <li>
-                Minimizing the variational free energy \(F(h,o)\) with respect to the recognition density \(q\), 
-                given an appropriate generative density \(p(h,o)\), allows an agent to approximate the Bayesian posterior \(p(h|o)\).
+                Minimizing the variational free energy \(F(x,q)\) with respect to the recognition density \(q\), 
+                given an appropriate generative density \(p(s,x)\), allows an agent to approximate the Bayesian posterior \(p(s|x)\).
             </li>
             <li>
-                The variational free energy \(F\) is an upper bound of surprise \(\log p(o)\).
+                The variational free energy \(F(x,q)\) is an upper bound of surprise \(-\log p(x)\), for all \(x\) and \(q\).
             </li>
         </ul>
         <h2>Perception<div style="color:red">UNDER CONSTRUCTION</div></h2>
-        EXPLAIN HOW q CAN BE PARAMETRIZED BY BRAIN STATES \(s\)
+        
+        <h3>Recognition density: encoding environmental states</h3>
+
+
+
+        <h3>Generative density: encoding beliefs about environmental causes of sensory input</h3>
+
+
+
+
         <h2>Action<div style="color:red">UNDER CONSTRUCTION</div></h2>
         Under the free energy principle, action does not appear explicitly in the formulation of the variational free energy 
         \(F\) but minimises \(F\) by changing sensory data \(o\).
@@ -131,6 +151,8 @@
 
         \[x = x(a)\]
         \[{dE(x,\mu) \over da } = {dx \over da} {\partial E (x,\mu)\over \partial x}\]
+
+        <h2>Goals<div style="color:red">UNDER CONSTRUCTION</div></h2>
 
         <div class="references">
             <h2>-References-</h2>
