@@ -137,6 +137,15 @@
         
         <h3>Recognition density: encoding environmental states</h3>
 
+        It is intractable to minimize \(F\) with respect to \(q\) in the most general case. However, we can consider a family of recognition densities, parameterized by a finite set of parameters \(m\), which provide <a href="https://en.wikipedia.org/wiki/Sufficient_statistic" target="_blank" rel="noopener noreferrer">sufficient statistics</a> for \(q(s) = q(s|m)\).
+
+        <h4>The Ensemble Approximation</h4>
+        \(m = (m_1,...,m_N)\)
+        \[q(s|m) = q_1(s|m_1) \times ... \times q_N(s|m_N)\]
+        <h4>The Laplace Approximation</h4>
+        \(m = (\mu,\sigma)\)
+        \[q(s|m) = {1 \over \sqrt{2 \pi \sigma }}\]
+
 
 
         <h3>Generative density: encoding beliefs about environmental causes of sensory input</h3>
