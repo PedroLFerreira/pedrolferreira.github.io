@@ -17,6 +17,10 @@
 <body> 
     <h1>The Free Energy Principle</h1>
     <div class="main-text">
+
+        This text is mostly based on the work in Buckley, C.L., et al., <em>The free energy principle for action and perception: A mathematical review</em>. Journal of Mathematical Psychology
+        (2017), <a href="http://dx.doi.org/10.1016/j.jmp.2017.09.004" target="_blank" rel="noopener noreferrer">http://dx.doi.org/10.1016/j.jmp.2017.09.004</a>.
+
         <h2>Overview</h2>
 
         Imagine an agent in an environment. To understand the free energy principle, consider the separation between the <strong>brain</strong> of the agent and the <strong>body</strong> of the agent. The agent itself is composed of the cognitive part only, while body of the agent is a part of the environment which the agent, through the decision-making process in the brain, can directly act upon. In other words, the agent is only a source of cognition and the body the part of the environment that the agent has direct access to change.
@@ -123,6 +127,14 @@
         Furthermore, since the KL divergence is non-negative (by the virtue of <a href="https://en.wikipedia.org/wiki/Gibbs%27_inequality" target="_blank" rel="noopener noreferrer">Gibb's inequality</a>), this implies that \(F\geq-\log p(x)\). Thus, variational free energy 
         provides an upper bound of surprise, allowing an agent to estimate it.
         
+         We can make the variational free energy even more explicit by splitting it into these two terms:
+
+         \[F = \int_S q(s) E(s,x)ds + \int_S q(s) \log q(s) ds\]
+
+         where the first term is called the <strong>average energy</strong>, with \(E(s,x)= -\log p(s,x)\) being called the <strong>energy</strong>, and the second term is the <strong>negative entropy</strong> of the \(q\) distribution.
+         
+
+
         <h3>Summary</h3>
         <ul>
             <li>
@@ -133,33 +145,162 @@
                 The variational free energy \(F(x,q)\) is an upper bound of surprise \(-\log p(x)\), for all \(x\) and \(q\).
             </li>
         </ul>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         <h2>Perception<div style="color:red">UNDER CONSTRUCTION</div></h2>
         
         <h3>Recognition density: encoding environmental states</h3>
 
         It is intractable to minimize \(F\) with respect to \(q\) in the most general case. However, we can consider a family of recognition densities, parameterized by a finite set of parameters \(m\), which provide <a href="https://en.wikipedia.org/wiki/Sufficient_statistic" target="_blank" rel="noopener noreferrer">sufficient statistics</a> for \(q(s) = q(s|m)\).
 
-        <h4>The Ensemble Approximation</h4>
+        <!-- <h4>The Ensemble Approximation</h4>
         \(m = (m_1,...,m_N)\)
-        \[q(s|m) = q_1(s|m_1) \times ... \times q_N(s|m_N)\]
+        \[q(s|m) = q_1(s|m_1) \times ... \times q_N(s|m_N)\] -->
+
+
+
         <h4>The Laplace Approximation</h4>
-        \(m = (\mu,\sigma)\)
-        \[q(s|m) = {1 \over \sqrt{2 \pi \sigma }}\]
+        The Laplace approximation assume the recognition density \(q\) is that of a normal distribution with parameters \(m = (\mu,\sigma)\) -- i.e., mean \(\mu\) and variance \(\sigma^2\). In this case, the recognition density is
+        
+        \[q(s|m) = {1 \over \sqrt{2 \pi \sigma^2 }} \exp\{ -(s-\mu)^2/(2\sigma^2)\} = {1\over Z} e^{-\epsilon(s)},\]
+
+        where \(Z = \sqrt{2 \pi \sigma^2}\) and \(\epsilon(s) = (s-\mu)^2/(2\sigma^2)\).
+        Substituting in the variational free energy,
+        \[F(x,\mu,\sigma) = \int_S {1\over Z} e^{-\epsilon(s)} \log \left( {{1\over Z} e^{-\epsilon(s)} \over p(s,x)}\right).\]
+
+        After some algebra, we get 
+
+        \[F(x,\mu,\sigma) = -\log Z - \int_S q(s)\epsilon(s) ds + \int_S q(s) E(s,x) ds\]
+
+        The first term evaluates to \(-\log Z = - {1 \over 2} (\log(2\pi\sigma^2))\).
+        The second term evaluates to \( - \int_S q(s)\epsilon(s) ds = -{1 \over 2}\).
+        The third term can be approximated by assuming \(\sigma\) is small enough that the Gaussian is sharply peaked at \(\mu\), meaning that \(E(s,x)\) is significantly non-zero only around a small neighbourhood of \(\mu\). Performing Taylor expansion of \(E(s,x)\) around \(\mu\), up to second order, gives
+
+        \[ \int_S q(s) E(s,x) ds = \int_S q(s) \left\{ E(\mu,x) + \left[{dE\over ds}\right]_{\mu} (s-\mu) + {1\over 2} \left[{d^2E\over ds^2}\right]_\mu (s-\mu)^2 \right\}ds.\]
+
+        The integral of the second term of the Taylor expansion is zero due to the odd nature of the integrand.
+
+        Evaluating the remaining integrals and substituting all the terms in \(F\) leads to:
+
+        \[F(x,\mu,\sigma) = E(\mu,x) + {1 \over 2} \left( \left[{d^2E\over ds^2}\right]_\mu(x) \sigma^2 -\log(2\pi\sigma^2)-1\right)\]
+        
+        The dependency on \(\sigma\) can be removed by taking the derivative and setting it to zero. We obtain the optimal value for the variance at \((\sigma^2)^* = \left[{d^2E\over ds^2}\right]_\mu(x)^{-1}\).
+
+        The variational free energy can then be written as a function of \(x\) and \(\mu\) as follows:
+
+        \[F(x,\mu) = E(\mu,x) - {1 \over 2}\log(2\pi(\sigma^2)^*).\]
+
+        What remains to be specified for the complete evaluation of the variational free energy is the energy \(E\), which is prescribed by the generative density \(p\).
+
+
 
 
 
         <h3>Generative density: encoding beliefs about environmental causes of sensory input</h3>
 
+        <h4>Simple generative model</h4>
+        Assume \(x = g(\mu|\theta) + Z\), where \(g\) is a linear or nonlinear function parameterized by \(\theta\), and \(Z\) is Gaussian noise with with zero mean and variance \(\sigma_Z\).
+        Assume \(\mu = \bar{\mu} + W\), where \(\bar{\mu}\) is a fixed parameter and \(W\) is Gaussian noise with zero mean and variance \(\sigma_W\).
+
+        Therefore, the likelihood can be expressed as 
+        \[p(x|\mu) = {1 \over \sqrt{2\pi\sigma_Z}} \exp\left\{-{(x-g(\mu|\theta))^2 \over 2 \sigma_Z}\right\},\]
+
+        and the prior as
+
+        \[p(\mu) = {1 \over \sqrt{2\pi\sigma_W}} \exp\left\{-{(\mu-\bar{\mu})^2 \over 2 \sigma_W}\right\}.\]
+
+        Since the joint probability can be obtained as a function of the likelihood and prior as \(p(\mu,x) = p(x|\mu)p(\mu)\), we can substitute these into the energy expression \(E\) as follows:
+
+        \[ E(\mu,x) = {1\over 2 \sigma_Z} \epsilon_Z^2 + {1\over 2 \sigma_W} \epsilon_W^2 + {1\over 2} \log(\sigma_Z \sigma_W),\]
+
+        where \(\epsilon_Z = x - g(\mu|\theta)\) and \(\epsilon_W = \mu - \bar{\mu}\) are the errors in \(x\) and \(\mu\), respectively. In other words, these errors are in fact prediction errors based on the actual values (\(x\) and \(\mu\)) and their predictions (generated by \(g\) and \(\bar{\mu}\), respectively).
+
+        <br><br>
+        In the multivariate case, with \(N\) sensory inputs and \(N\) mental states (i.e., \(\boldsymbol{x} = (x_1,...,x_N)\) and \(\boldsymbol{\mu} = (\mu_1,...,\mu_N)\), resp.), the energy is:
+
+        \[ E(\boldsymbol{\mu},\boldsymbol{x}) = {1\over 2} (\boldsymbol{\mu}-\boldsymbol{\bar{\mu}})\Sigma_W^{-1}(\boldsymbol{\mu}-\boldsymbol{\bar{\mu}})^T + {1\over 2} (\boldsymbol{x}-\boldsymbol{g}(\boldsymbol{\mu}))\Sigma_Z^{-1}(\boldsymbol{x}-\boldsymbol{g}(\boldsymbol{\mu}))^T  + {1\over 2} \log|\Sigma_Z|,\]
+
+        where \(\boldsymbol{\bar{\mu}}\) and \(\boldsymbol{g}(\boldsymbol{\mu})\) are \(N\)-vectors of predictions of \(\boldsymbol{\mu}\) and \(\boldsymbol{x}\), respectively, and \(\Sigma_W\) and \(\Sigma_Z\) are covariance matrices of the \(N\)-dimensional Gaussian random variables \(W = \boldsymbol{\mu}-\boldsymbol{\bar{\mu}}\) and \(Z = \boldsymbol{x}-\boldsymbol{g}(\boldsymbol{\mu})\).
 
 
 
-        <h2>Action<div style="color:red">UNDER CONSTRUCTION</div></h2>
+        <h4>Dynamical generative model</h4>
+        
+        If we assume that the environment is dynamic (i.e., changes with time), then the simple assumption \(\mu = \bar{\mu} + W\), with fixed \(\bar{\mu}\) is not going to work.
+
+        If we assume instead that the internal model changes according to some function \(f\), like so
+        \[\dot{\mu} = f(\mu) + W,\]
+        then a dynamical generative model can be obtained by combining this dynamic with the simple generative model.
+
+        <br><br>
+        Assuming the agent has access to the higher-order time derivatives of the sensory input and internal model, then these can be used for inference. Let \(\tilde{\mu}\) be an infinite vector containing time derivatives of all orders of the internal model, such that
+        
+        \[\tilde{\mu} = \left(\mu^{(0)}, \mu^{(1)}, \mu^{(2)},...\right),\]
+
+        where \(\mu^{(0)}=\mu\) and \(\mu^{(n)} = {\partial f(\mu) \over \partial \mu}\mu^{(n-1)} + W^{(n-1)}\), for \(n>0\), with \(W^{(n)}\) being the random noise of the internal model at order \(n\).
+
+        Let \(\tilde{x}\) be an infinite vector containing time derivatives of all orders of the sensory input, such that
+
+        \[\tilde{x} = \left(x^{(0)}, x^{(1)}, x^{(2)},...\right),\]
+
+        where \(x^{(0)}=g(\mu) + Z\) and \(x^{(n)} = {\partial g(\mu) \over \partial \mu}\mu^{(n)} + Z^{(n)}\), for \(n>0\), with \(Z^{(n)}\) being the random noise of the sensory input at order \(n\).
+
+        <br><br>
+
+        \[E(\tilde{\mu},\tilde{x}) = \sum_{n=0}^\infty \left\{ {1\over 2\sigma_Z^{(n)}}\left[\epsilon_Z^{(n)}\right]^2 + {1\over 2}\log\sigma_Z^{(n)} + 
+        {1\over 2\sigma_W^{(n)}}\left[\epsilon_W^{(n)}\right]^2 + {1\over 2}\log\sigma_W^{(n)}\right\},\]
+
+        with \(\epsilon_Z^{(n)} = x^{(n)} - g^{(n)}\), and \(\epsilon_W^{(n)} = \mu^{(n+1)} - f^{(n)}\), where \(g^{(0)} = g(\mu)\), \(f^{(0)} = f(\mu)\), and, for \(n>0\),
+
+        \[g^{(n)} = {\partial g(\mu) \over \partial \mu}\mu^{(n)}, \text{ and}\]
+        \[f^{(n)} = {\partial f(\mu) \over \partial \mu}\mu^{(n)}.\]
+
+        <br><br>
+        In the \(N\)-dimensional multivariate case,
+        \[E(\tilde{\boldsymbol{\mu}},\tilde{\boldsymbol{x}}) = \sum_{i=1}^N\sum_{n=0}^\infty \left\{ {1\over 2\sigma_{Z,i}^{(n)}}\left[\epsilon_{Z,i}^{(n)}\right]^2 + {1\over 2}\log\sigma_{Z,i}^{(n)} + 
+        {1\over 2\sigma_{W,i}^{(n)}}\left[\epsilon_{W,i}^{(n)}\right]^2 + {1\over 2}\log\sigma_{W,i}^{(n)}\right\},\]
+
+        where \(\epsilon_{Z,i}^{(n)} = x_{i}^{(n)} - g_{i}^{(n)}\), \(\epsilon_{W,i}^{(n)} = \mu_{i}^{(n+1)} - f_{i}^{(n)}\).
+
+        <h3>Active Inference</h3>
+
+        \[\mu_i^{t+1} = \mu_i^{t} - \eta_\mu \hat{\mu}_i \cdot \nabla_{\tilde{\mu}_i}E(\boldsymbol{\mu},\boldsymbol{x})\]
+
+        \[a^{t+1} = a^{t} - \eta_a \sum_i {d\tilde{x}_i \over da} \cdot \nabla_{\tilde{x}_i}E(\boldsymbol{\mu},\boldsymbol{x})\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- <h2>Action<div style="color:red">UNDER CONSTRUCTION</div></h2>
         Under the free energy principle, action does not appear explicitly in the formulation of the variational free energy 
-        \(F\) but minimises \(F\) by changing sensory data \(o\).
+        \(F\) but minimises \(F\) by changing sensory data, i.e. \(x = x(a)\).
         In other words, the agent can minimize \(F\) by acting upon the environment, changing the incoming sensory input.
 
-        \[x = x(a)\]
-        \[{dE(x,\mu) \over da } = {dx \over da} {\partial E (x,\mu)\over \partial x}\]
+        \[{dE(\mu,x) \over da } = {dx \over da} {\partial E (\mu,x)\over \partial x}\]
+ -->
+
+
 
         <h2>Goals<div style="color:red">UNDER CONSTRUCTION</div></h2>
 
