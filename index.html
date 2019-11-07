@@ -9,22 +9,49 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function (){
+            $("#about-button").click(function (){
+                $('html, body').animate({
+                    scrollTop: $("#bio").offset().top
+                }, 500);
+            });
+        });
+
+        $(document).ready(function (){
+            $("#publications-button").click(function (){
+                $('html, body').animate({
+                    scrollTop: $("#publications").offset().top
+                }, 500);
+            });
+        });
+
+        $(document).ready(function (){
+            $("#seminars-button").click(function (){
+                $('html, body').animate({
+                    scrollTop: $("#seminars").offset().top
+                }, 500);
+            });
+        });
+    </script>
+
 </head> 
 <body>
     <div class="profile">
         <header>
             <div class="header-menu">
-                <div class="header-menu-item">
-                    <a href="#about" rel="noopener noreferrer">About</a>
+                <div class="header-menu-item" id="about-button">
+                    About
                 </div>
                 <!-- <div class="header-menu-item">
                     <a href="#blog" rel="noopener noreferrer">Blog</a>
                 </div> -->
-                <div class="header-menu-item">
-                    <a href="#publications" rel="noopener noreferrer">Publications</a>
+                <div class="header-menu-item" id="publications-button">
+                    Publications
                 </div>
-                <div class="header-menu-item">
-                    <a href="#seminars" rel="noopener noreferrer">Seminars</a>
+                <div class="header-menu-item" id="seminars-button">
+                    Seminars
                 </div>
             </div>
         </header>

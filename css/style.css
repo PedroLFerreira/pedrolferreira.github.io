@@ -55,6 +55,15 @@ h2 {
     text-transform: uppercase;
     margin: 10px;
     font-family: 'Bree Serif', serif;
+
+    padding: 5px 10px;
+    border-radius: 2px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.1s ease-in-out;
+
+    font-weight: 600;
+    cursor: pointer;
 }
 
 .header-menu-item a {
