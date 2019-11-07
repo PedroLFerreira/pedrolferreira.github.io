@@ -3,11 +3,12 @@ body {
     color: rgb(65, 65, 65);
     font-size: 1em;
     font-weight: 300;
-    line-height: 1.4em;
+    line-height: 1.5em;
     
     margin: 0;
     padding: 0;
     background-color: rgb(255, 255, 255);
+
 }
 
 header {
@@ -133,6 +134,7 @@ footer {
     padding-top: 40px;
     color: white;
     font-family: 'Bree Serif', serif;
+    text-align: center;
 }
 
 .social-item {
@@ -140,9 +142,13 @@ footer {
 }
 
 .social-item a {
-    font-size: 1.1em;
+    font-size: 1.2em;
+    padding: 10px;
+    margin: 10px;
     color: white;
+
     font-family: 'Bree Serif', serif;
+    transition: all 0.1s ease-in-out;
 }
 
 #profile-image {
@@ -243,4 +249,8 @@ footer {
 .seminar-title {    
     font-size: 1.1em;
     margin-bottom: 2px;
+}
+
+.seminar-place {
+    font-style: italic;
 }
