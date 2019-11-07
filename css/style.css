@@ -1,9 +1,10 @@
-* {
-    font-family: 'Roboto', sans-serif;
-    color: rgb(65, 65, 65);
-}
-
 body {
+    font-family: 'Open Sans', sans-serif;
+    color: rgb(65, 65, 65);
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 1.4em;
+    
     margin: 0;
     padding: 0;
     background-color: rgb(255, 255, 255);
@@ -19,86 +20,123 @@ main {
     padding: 0 10%;
 }
 
+
+a {
+    color: rgb(0, 88, 161);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+h2 {
+    font-family: 'Bree Serif', serif;
+    text-align: center;
+    font-size: 2em;
+    padding-top: 1em;
+    padding-bottom: 0.5em;
+}
+
 .header-menu {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .header-menu-item {
-    font-size: 12pt;
     text-transform: uppercase;
-    padding: 15px;
+    margin: 10px;
+    font-family: 'Bree Serif', serif;
 }
 
 .header-menu-item a {
+    padding: 5px 10px;
+    border-radius: 2px;
     text-decoration: none;
+    color: white;
 }
 
 .profile-div {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* width: 100vw; */
-
-
-    /* background-size: auto; */
-    /* background-color: #cccccc; */
 }
 
-.profile-name, .profile-titles, .header-menu-item a {
+.profile-name, .profile-titles{
     color: white;
+    font-family: 'Bree Serif', serif;
 }
 
 .profile-titles {
     margin-top: 2px;
+    font-size: 1.1em;
+    text-align: center;
+    padding-bottom: 40px;
 }
 
 .profile {
-    /* background-image: url('../vector-bg.jpg'); */
     background-color: rgb(0, 88, 161);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    /* padding: 0; */
-    /* height: 600px; */
+    background: -moz-linear-gradient(180deg, rgba(7,0,121,1) 0%, rgb(0, 88, 161) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(7,0,121,1) 0%, rgb(0, 88, 161) 100%);
+    background: linear-gradient(180deg, rgba(7,0,121,1) 0%, rgb(0, 88, 161) 100%);
 }
 
 .bio-text {
-    text-align: justify;
-    /* color: grey; */
+    text-align: center;
+}
+
+li{
+    text-align: left;
+    padding-bottom: 20px;
 }
 
 footer {
-    /* position: absolute;
-    bottom:0;
-    width: 100vw; */
     display: flex;
     flex-direction: column;
     align-content: center;
-    padding-bottom: 1%;
+    padding-bottom: 20px;
     padding-top: 50px;
     flex-wrap: wrap;
+    margin-top: 30px;
+
+    background-color: rgb(0, 88, 161);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background: -moz-linear-gradient(0deg, rgba(7,0,121,1) 0%, rgb(0, 88, 161) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(7,0,121,1) 0%, rgb(0, 88, 161) 100%);
+    background: linear-gradient(0deg, rgba(7,0,121,1) 0%, rgb(0, 88, 161) 100%);
 }
 
-footer .social-list {
+.social-list {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    
 }
 
-footer .copyright {
-    padding-top: 10px;
+.copyright {
+    padding-top: 40px;
+    color: white;
+    font-family: 'Bree Serif', serif;
+
 }
 
 .social-item {
     padding-left: 10px;
 }
 
+.social-item a {
+    font-size: 1.1em;
+    color: white;
+    font-family: 'Bree Serif', serif;
+}
+
 #profile-image {
     border-radius: 50%;
-    border: solid white 6px
+    border: solid white 6px;
+    width: 175px;
 }
 
 .publications-entries {
@@ -125,7 +163,7 @@ footer .copyright {
 .pub-item-header {
     border-radius: 2px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     /* background-color: rgb(157, 235, 255); */
     padding: 15px;
@@ -146,6 +184,27 @@ footer .copyright {
 }
 
 
+.pub-title {
+    font-family: 'Bree Serif', serif;
+    
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.pub-authors {
+    font-family: 'Bree Serif', serif;
+    font-size: 0.95em;
+    /* margin-left: 10px; */
+}
+
+.pub-details{
+    font-family: 'Bree Serif', serif;
+    font-style: italic;
+    font-size: 0.95em;
+    /* margin-left: 10px; */
+
+}
+
 .pub-date {
     padding-right: 10px;
     font-style: italic;
@@ -159,5 +218,12 @@ footer .copyright {
 }
 
 .pub-link, .pub-link a {
-    color: red;
+    color: rgb(0, 88, 161);
+    font-family: 'Bree Serif', serif;
+    font-size: 1.1em;
+}
+
+.seminar {
+    font-family: 'Bree Serif', serif;
+
 }
