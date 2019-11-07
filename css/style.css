@@ -93,7 +93,7 @@ h2 {
     margin-top: 2px;
     font-size: 1.1em;
     text-align: center;
-    padding-bottom: 40px;
+    margin-bottom: 40px; 
 }
 
 .profile {
@@ -104,6 +104,8 @@ h2 {
     background: -moz-linear-gradient(180deg, rgba(7,0,121,1) 0%, rgb(0, 88, 161) 100%);
     background: -webkit-linear-gradient(180deg, rgba(7,0,121,1) 0%, rgb(0, 88, 161) 100%);
     background: linear-gradient(180deg, rgba(7,0,121,1) 0%, rgb(0, 88, 161) 100%);
+
+    padding-bottom: 40px;
 }
 
 .bio-text {
@@ -146,18 +148,27 @@ footer {
     text-align: center;
 }
 
-.social-item {
-    padding-left: 10px;
+
+#email {
+    color: white;
+    text-align: center;
+    padding-bottom: 10px;
 }
 
-.social-item a {
-    font-size: 1.2em;
+.social-list a {
+    font-size: 1.4em;
+    /* width: 200px;
+    height: 200px; */
     padding: 10px;
     margin: 10px;
     color: white;
-
     font-family: 'Bree Serif', serif;
     transition: all 0.1s ease-in-out;
+
+}
+
+.social-list a:hover {
+    color: rgb(0, 140, 255);
 }
 
 #profile-image {
