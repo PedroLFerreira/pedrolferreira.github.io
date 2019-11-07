@@ -258,6 +258,9 @@ footer {
 .pub-link, .pub-link a {
     color: rgb(0, 88, 161);
     font-family: 'Bree Serif', serif;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .seminar {
