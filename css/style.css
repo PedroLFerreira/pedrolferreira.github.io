@@ -1,25 +1,44 @@
 body {
     font-family: 'Open Sans', sans-serif;
-    color: rgb(65, 65, 65);
-    font-size: 1em;
+    color: rgb(48, 48, 48);
+    font-size: 1.1em;
     font-weight: 300;
     line-height: 1.5em;
     
     margin: 0;
     padding: 0;
     background-color: rgb(255, 255, 255);
-
+    display: flex;
+    flex-direction: column;   
 }
 
-header {
+
+nav {
     padding: 0;
     padding-top: 10px;
-    padding-bottom: 40px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* padding-left: 80px; */
 }
 
-main {
-    padding: 0 10%;
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    /* background-color: rgb(250, 250, 250); */
+    border-right: 1px solid rgb(250, 250, 250);
 }
+
+
+.main {
+    /* margin-right: 10%; */
+    padding: 0 10px;
+}
+
+
+
 
 
 a {
@@ -41,36 +60,36 @@ h2 {
     padding-top: 1em;
     padding-bottom: 0.5em;
     line-height: 1.3em;
-
 }
 
 .header-menu {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: left;
     flex-wrap: wrap;
 }
 
 .header-menu-item {
     text-transform: uppercase;
-    margin: 10px;
+    margin: 5px;
     font-family: 'Bree Serif', serif;
 
-    padding: 5px 10px;
+    padding: 0px 10px;
     border-radius: 2px;
     text-decoration: none;
-    color: white;
+    /* color: white; */
     transition: all 0.1s ease-in-out;
 
     font-weight: 600;
     cursor: pointer;
+    color: rgb(48, 48, 48);
 }
 
 .header-menu-item a {
     padding: 5px 10px;
     border-radius: 2px;
     text-decoration: none;
-    color: white;
+    /* color: white; */
     transition: all 0.1s ease-in-out;
 }
 
@@ -84,32 +103,25 @@ h2 {
     align-items: center;
 }
 
-.profile-name, .profile-titles{
-    color: white;
+.profile-name{
+    /* color: white; */
     font-family: 'Bree Serif', serif;
+    font-size: 16pt;
 }
 
 .profile-titles {
     margin-top: 2px;
-    font-size: 1.1em;
+    /* font-size: 1.1em; */
+    font-size: 12pt;
     text-align: center;
-    margin-bottom: 40px; 
+    margin-bottom: 10px; 
 }
 
-.profile {
-    background-color: rgb(0, 88, 161);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background: -moz-linear-gradient(180deg, rgba(7,0,121,1) 0%, rgb(0, 88, 161) 100%);
-    background: -webkit-linear-gradient(180deg, rgba(7,0,121,1) 0%, rgb(0, 88, 161) 100%);
-    background: linear-gradient(180deg, rgba(7,0,121,1) 0%, rgb(0, 88, 161) 100%);
 
-    padding-bottom: 40px;
-}
 
 .bio-text {
-    text-align: center;
+    text-align: justify;
+    padding: 0 10px;
 }
 
 li{
@@ -126,13 +138,13 @@ footer {
     flex-wrap: wrap;
     margin-top: 50px;
 
-    background-color: rgb(0, 88, 161);
+    /* background-color: rgb(0, 88, 161);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     background: -moz-linear-gradient(0deg, rgba(7,0,121,1) 0%, rgb(0, 88, 161) 100%);
     background: -webkit-linear-gradient(0deg, rgba(7,0,121,1) 0%, rgb(0, 88, 161) 100%);
-    background: linear-gradient(0deg, rgba(7,0,121,1) 0%, rgb(0, 88, 161) 100%);
+    background: linear-gradient(0deg, rgba(7,0,121,1) 0%, rgb(0, 88, 161) 100%); */
 }
 
 .social-list {
@@ -142,17 +154,30 @@ footer {
 }
 
 .copyright {
+    /* position: fixed;
+    bottom: 0; */
     padding-top: 40px;
-    color: white;
+    /* color: white; */
     font-family: 'Bree Serif', serif;
     text-align: center;
+    align-self: center;
+    padding-bottom: 10px;
 }
 
+#copyright-footer {
+    padding-top: 10px;
+}
+
+#copyright-sidebar {
+    display: none;
+}
 
 #email {
-    color: white;
+    /* font-family: 'Bree Serif', serif; */
+
     text-align: center;
     padding-bottom: 10px;
+    font-size: 0.9em;
 }
 
 .social-list a {
@@ -161,7 +186,7 @@ footer {
     height: 200px; */
     /* padding: 10px; */
     margin: 10px;
-    color: white;
+    /* color: white; */
     font-family: 'Bree Serif', serif;
     transition: all 0.1s ease-in-out;
 
@@ -173,9 +198,15 @@ footer {
 
 #profile-image {
     border-radius: 50%;
-    border: solid white 6px;
+    /* border: solid white 6px; */
     width: 175px;
 }
+
+
+.bio-summary{
+    padding-bottom: 10px;
+}
+
 
 .publications-entries {
     display: flex;
@@ -256,7 +287,7 @@ footer {
 }
 
 .pub-link, .pub-link a {
-    color: rgb(0, 88, 161);
+    color: rgb(0,166,214);
     font-family: 'Bree Serif', serif;
     display: flex;
     flex-direction: row;
@@ -275,4 +306,56 @@ footer {
 
 .seminar-place {
     font-style: italic;
+}
+
+
+
+.blog-list {
+    margin-top: 2em;
+    border-top: 1px solid rgb(250, 250, 250);
+    display: flex;
+    flex-direction: column;
+}
+.blog-list * {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(250, 250, 250);
+}
+
+
+
+
+
+@media screen and (min-width: 800px) {
+    body {
+        flex-direction: row;
+    }
+
+    .sidebar{
+        padding-left: 20px;
+        width: 300px;
+        height: 100%;
+        position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+        z-index: 1; /* Stay on top */
+        top: 0; /* Stay at the top */
+        left: 0;
+        overflow-x: hidden; /* Disable horizontal scroll */
+    }
+    .main {
+        width: 100%;
+        max-width: 1150px;
+        margin-left: 350px;
+        margin-right: 10%;
+        padding: 0 10px;
+    }
+
+    #copyright-sidebar {
+        display: block;
+        position: fixed;
+        bottom: 0;
+    }
+
+    #copyright-footer, footer{
+        display: none;
+    }
 }

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pedro Ferreira</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+        // $(document).ready(function (){
+        //     $("#about-button").click(function (){
+        //         $('html, body').animate({
+        //             scrollTop: $("#bio").offset().top
+        //         }, 500);
+        //     });
+        // });
+
+        // $(document).ready(function (){
+        //     $("#publications-button").click(function (){
+        //         $('html, body').animate({
+        //             scrollTop: $("#publications").offset().top
+        //         }, 500);
+        //     });
+        // });
+
+        // $(document).ready(function (){
+        //     $("#seminars-button").click(function (){
+        //         $('html, body').animate({
+        //             scrollTop: $("#seminars").offset().top
+        //         }, 500);
+        //     });
+        // });
+    </script>
+
+</head> 
+<body>
+    <div class="sidebar">
+        <div class="profile-div" id="about">
+            <img id="profile-image" src="./img/profile-image.jpg" alt="profile image">
+            <h1 class="profile-name">Pedro L. Ferreira</h1>
+            <h4 class="profile-titles">PhD Candidate @ <a href="https://www.tudelft.nl/en/" target="_blank" rel="noopener noreferrer">TUDelft</a></h2>
+        </div>
+
+        <div class="social">
+            <div id="email">Pedro.Ferreira [at] TUDelft.nl</div>
+
+            <div class="social-list">
+                <a target="_blank" href="https://www.linkedin.com/in/tetraktyz/"><i class="fab fa-linkedin-in"></i></a>
+                <a target="_blank" href="https://github.com/PedroLFerreira"><i class="fab fa-github"></i></a>
+                <a target="_blank" href="https://twitter.com/_PLFerreira_"><i class="fab fa-twitter"></i></a>
+                <a href="./docs/pedro_ferreira_cv.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+            </div>
+        </div>
+
+        <nav>
+            <a href="index.html"class="header-menu-item" id="about-button">
+                About Me
+            </a>
+            <a href="research.html" class="header-menu-item" id="publications-button">
+                Research
+            </a>
+            <a href="blog.html"class="header-menu-item" id="blog-button">
+                Blog
+            </a>
+        </nav>
+        <div class="copyright" id="copyright-sidebar">©2021 Pedro Ferreira</div>
+
+    </div>
+    <div class="main">
+        <div class="publications-summary" id="publications">
+            <h2 class="publications-title">Publications & Dissertations</h2>
+            <div class="publications-entries">
+                <div class="pub-item">
+                    <div class="pub-item-header">
+                        <div class="pub-title">Risk Sensitivity and Theory of Mind in Human Coordination</div>
+                        <div class="pub-authors"><strong>Pedro L. Ferreira</strong>, Sérgio Pequito, Francisco C. Santos</div>
+                        <div class="pub-details">Currently under review</div>
+                    </div>
+                    <div class="pub-item-collapsable">
+                        <div class="pub-abstract">
+                                Theory of mind models the way humans handle social
+                                situations by managing internal models of others
+                                in order to predict their actions. A particular recursive
+                                scheme that captures such behavior is the level-k
+                                model where behavior is hierarchically arranged in increasing
+                                sophistication level such that a level-k behavior
+                                is the best response against a level-(k-1) policy of
+                                the other agent. Expected utility theory (EUT) is commonly
+                                used in decision-making models together with
+                                the level-k model, as a theory of value. However, EUT
+                                is known to not capture biases due to human interpretations
+                                of risk associated with decisions and their value.
+                                <br><br>
+                                In this work, we develop a framework that enables us
+                                to consider level-k recursive theory of mind where biases
+                                and risk associated with decisions are captured by
+                                cumulative prospect theory (CPT), a risk-sensitive theory
+                                of value. We show that risk-sensitive agents (i.e.
+                                using CPT) are better at coordinating, with increasing
+                                sophistication level k, compared to risk-neutral agents
+                                (i.e. using EUT). 
+                                <br><br>
+                                We find that both settings suggest that
+                                the reason why humans are good at coordination may
+                                stem from the fact that we are cognitively biased to
+                                do so. As a consequence, we might be able to leverage
+                                the proposed framework to equip artificial intelligence
+                                decision-making schemes with human-like reasoning.
+                        </div>
+                        <div class="pub-footer">
+                            <div class="pub-link">
+                                Under Review
+                            </div>
+                            <div class="pub-date">October 2019</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <div class="pub-item-header">
+                        <div class="pub-title">The Fall of Homo Economicus</div>
+                        <div class="pub-authors"><strong>Pedro L. Ferreira</strong></div>
+                        <div class="pub-details">Master Thesis</div>
+                    </div>
+                    <div class="pub-item-collapsable">
+                        <div class="pub-abstract">
+                                The cognitive mechanics of human decision-making is affected by a large set of high-level processes.
+                                Some of these processes, called cognitive biases, are often regarded as failures, since they prescribe
+                                behavior which is not deemed as rational. Furthermore, in social settings, humans employ a process
+                                known as theory of mind which enables them to create and manage a dynamic model of the mental
+                                states of others, allowing for the prediction of future actions to better inform current behavior. 
+                                <br><br>
+                                Can cognitive biases promote coordination? Can increasingly sophisticated levels of theory of mind promote
+                                coordination? In this thesis, we answer these questions by showing how coordination among
+                                agents measuring value using the prescriptive Expected Utility Theory (EUT) differs from the coordination
+                                among agents measuring value using the descriptive Cumulative Prospect Theory (CPT), in two
+                                experimental settings: a normal-form stag hunt game allows us to study how coordination differs when
+                                agents use EUT and CPT as theories of value, while a Markov game of stag hunt focuses on studying the
+                                effects of increasingly sophisticated policies among both EUT- and CPT-agents, using the recursive theory
+                                of mind level-k model that captures bounded rationality. 
+                                <br><br>
+                                We show that CPT-agents are better able to coordinate in both experiments, compared to EUT-agents. 
+                                Furthermore, in the Markov stag hunt, while
+                                coordination with both EUT and CPT stand to gain from increasingly sophisticated policies, CPT-agents
+                                do not require as much sophistication as EUT-agents do to coordinate to the same extent. We can thus
+                                conclude that, while some of these cognitive biases are viewed as failures in individual decision-making,
+                                they actually make social interaction easier.
+                        </div>
+                        <div class="pub-footer">
+                            <div class="pub-link">
+                                <div>
+                                    <a href="docs/msc_thesis.pdf" target="_blank" rel="noopener noreferrer">[Thesis PDF]</a> 
+                                </div>
+                                <div>
+                                    <a href="docs/The%20Fall%20of%20homo%20economicus.pdf" target="_blank" rel="noopener noreferrer">[Slides PDF]</a>
+                                </div>
+                            </div>
+                            <div class="pub-date">October 2019</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="seminars" id="seminars">
+            <h2 class="seminars-title">Seminars & Talks</h2>
+
+            <div class="seminar">
+                <div class="seminar-title">Homo Ex Machina: The Man from the Machine</div>
+                <div class="seminar-place">Department of Physics and Mathematics, IST, University of Lisbon, PT. May 2019.</div>
+                <div class="seminar-link">
+                    <a href="docs/Homo%20Ex%20Machina.pdf" target="_blank" rel="noopener noreferrer">[Slides PDF]</a> 
+                </div>
+            </div>
+            
+        </div>
+        <footer>
+            <div class="social">
+                <div id="email">Pedro.Ferreira [at] TUDelft.nl</div>
+                <div class="social-list">
+                    <a target="_blank" href="https://www.linkedin.com/in/tetraktyz/"><i class="fab fa-linkedin-in"></i></a>
+                    <a target="_blank" href="https://github.com/PedroLFerreira"><i class="fab fa-github"></i></a>
+                    <a target="_blank" href="https://twitter.com/_PLFerreira_"><i class="fab fa-twitter"></i></a>
+                    <a href="./docs/pedro_ferreira_cv.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+                </div>
+            </div>
+            <div class="copyright" id="copyright-footer">©2021 Pedro Ferreira</div>
+        </footer>
+    </div>
+    
+
+    <script>
+        var pub_item_header_inactive_color = "rgb(241, 241, 241)"
+        var pub_item_header_active_color = "rgb(0, 88, 161)"
+
+        $(".pub-item-collapsable").hide() // Close all
+        $(".pub-item-header").css("background-color",pub_item_header_inactive_color)
+        
+        $(".pub-item-header").hover(function () {
+            $(this).css("background-color", pub_item_header_active_color)
+            $(this).children().css("color","white")
+            $(this).children().children().css("color","white");
+        },function() {
+            var isHidden = $($(this.parentElement).children()[1]).is(":hidden")
+            if(isHidden){
+                $(this).css("background-color",pub_item_header_inactive_color)
+                $(this).children().css("color","black")
+                $(this).children().children().css("color","black")
+            }
+        })
+
+        $(".pub-item-header").click(function(){
+            var isHidden = $($(this.parentElement).children()[1]).is(":hidden")
+            $(".pub-item-collapsable").slideUp(400) // Close all
+            $(".pub-item-header").css("background-color",pub_item_header_inactive_color)
+            $(".pub-item-header").children().css("color","black")
+            $(".pub-item-header").children().children().css("color","black");
+
+            if(isHidden){
+                // $($(this.parentElement).children()[1]).slideUp(400) // Open clicked if closed
+                $($(this.parentElement).children()[1]).slideToggle(400);
+                $(this).css("background-color", pub_item_header_active_color)
+                $(this).children().css("color","white")
+                $(this).children().children().css("color","white")
+            }
+            else {
+                $(this).css("background-color",pub_item_header_inactive_color)
+                $(this).children().css("color","black")
+                $(this).children().children().css("color","black")
+            }
+        })
+    </script>
+</body>
+</html>
