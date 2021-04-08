@@ -1,7 +1,7 @@
 body {
     font-family: 'Open Sans', sans-serif;
     color: rgb(48, 48, 48);
-    font-size: 1.1em;
+    font-size: 1em;
     font-weight: 300;
     line-height: 1.5em;
     
@@ -329,6 +329,7 @@ footer {
 @media screen and (min-width: 800px) {
     body {
         flex-direction: row;
+        font-size: 1.1em;
     }
 
     .sidebar{
