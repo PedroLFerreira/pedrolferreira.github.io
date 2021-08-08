@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class="slidecontainer">
-        R = <span id="R-display">100</span>
+        R = <span id="R-display">100</span>     Length of path = <span id="path-length-display"></span>
         <br>
         <input type="range" min="1" max="200" value="100" class="slider" id="R-slider">
     </div>
@@ -155,6 +155,7 @@
     let mid_point_2_angle_in_side_circle = 0;
 
     let smallest_path = "NONE";
+    let smallest_path_length = Infinity;
     let distance_RR = Infinity;
     let distance_LL = Infinity;
     let distance_LR = Infinity;
@@ -358,7 +359,7 @@
         // LRL
         // RLR
         console.clear();
-        let smallest_distance = Infinity;
+        smallest_path_length = Infinity;
         smallest_path = "NONE";
 
         ;
@@ -369,8 +370,8 @@
         let L_LL  = Math.sqrt(tpoint_LL_dx*tpoint_LL_dx + tpoint_LL_dy*tpoint_LL_dy);
         let S2_LL = R*((2*Math.PI - q_left_angle + Math.atan2(tpoint_LL_2.y-c2_left.y,tpoint_LL_2.x-c2_left.x)) % (2*Math.PI));
         distance_LL = S1_LL + L_LL + S2_LL;
-        if(distance_LL < smallest_distance){
-            smallest_distance = distance_LL;
+        if(distance_LL < smallest_path_length){
+            smallest_path_length = distance_LL;
             smallest_path = "LSL";
         }
         
@@ -380,8 +381,8 @@
         let L_RR  = bitangents_RR.distances.beta;
         let S2_RR = R*((2*Math.PI-Math.atan2(tpoint_RR_2.y-c2_right.y,tpoint_RR_2.x-c2_right.x)+q_right_angle) % (2*Math.PI) );
         distance_RR = S1_RR + L_RR + S2_RR;
-        if(distance_RR < smallest_distance){
-            smallest_distance = distance_RR;
+        if(distance_RR < smallest_path_length){
+            smallest_path_length = distance_RR;
             smallest_path = "RSR";
         }
 
@@ -392,8 +393,8 @@
         let L_LR  = Math.sqrt(tpoint_LR_dx*tpoint_LR_dx + tpoint_LR_dy*tpoint_LR_dy);
         let S2_LR = R*((2*Math.PI-Math.atan2(tpoint_LR_2.y-c2_right.y,tpoint_LR_2.x-c2_right.x)+q_right_angle) % (2*Math.PI));
         distance_LR = S1_LR + L_LR + S2_LR;
-        if(distance_LR < smallest_distance){
-            smallest_distance = distance_LR;
+        if(distance_LR < smallest_path_length){
+            smallest_path_length = distance_LR;
             smallest_path = "LSR";
         }
 
@@ -406,8 +407,8 @@
         let L_RL  = Math.sqrt(tpoint_RL_dx*tpoint_RL_dx + tpoint_RL_dy*tpoint_RL_dy);
         let S2_RL = (2*Math.PI -(2*Math.PI-Math.atan2(tpoint_RL_2.y-c2_left.y,tpoint_RL_2.x-c2_left.x)+q_left_angle) % (2*Math.PI))*180/Math.PI;
         distance_RL = S1_RL + L_RL + S2_RL;
-        if(distance_RL < smallest_distance){
-            smallest_distance = distance_RL;
+        if(distance_RL < smallest_path_length){
+            smallest_path_length = distance_RL;
             smallest_path = "RSL";
         }
 
@@ -421,8 +422,8 @@
             let m22     = Math.atan2(mid_point_2.y-c2_left.y,mid_point_2.x-c2_left.x);
             let S3_LRL = (2*Math.PI - (2*Math.PI - (2*Math.PI-qlangle + m22) % (2*Math.PI)));
             distance_LRL = R*(S1_LRL + S2_LRL + S3_LRL);
-            if(distance_LRL < smallest_distance){
-                smallest_distance = distance_LRL;
+            if(distance_LRL < smallest_path_length){
+                smallest_path_length = distance_LRL;
                 smallest_path = "LRL";
             }
         }
@@ -439,8 +440,8 @@
 
             distance_RLR = R*(S1_RLR + S2_RLR + S3_RLR);
 
-            if(distance_RLR < smallest_distance){
-                smallest_distance = distance_RLR;
+            if(distance_RLR < smallest_path_length){
+                smallest_path_length = distance_RLR;
                 smallest_path = "RLR";
             }
         }
@@ -452,6 +453,9 @@
         console.log("RSL (purple):",distance_RL);
         console.log("RLR:",distance_RLR);
         console.log("LRL:",distance_LRL);
+
+
+        document.getElementById("path-length-display").innerHTML = (Math.round(smallest_path_length * 100) / 100).toFixed(2);
     }
 
     function get_bitangents(circle1,circle2){
