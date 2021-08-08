@@ -142,6 +142,15 @@
     let mid_point_1_angle_in_side_circle = 0;
     let mid_point_2_angle_in_side_circle = 0;
 
+    let smallest_path = "NONE";
+    let distance_RR = Infinity;
+    let distance_LL = Infinity;
+    let distance_LR = Infinity;
+    let distance_RL = Infinity;
+    let distance_RLR = Infinity;
+    let distance_LRL = Infinity;
+
+
     function setPosition(event,button){
         if(button == "LMB"){
             p.x = event.clientX - canvas.offsetLeft;
@@ -279,58 +288,6 @@
         tpoint_RL_2.y = c2_left.y  - c2_sin_theta*c2_left_dx  + c2_cos_theta*c2_left_dy;
 
 
-        
-        
-        // Decide which set of bitangents is smallest
-        // LL -> alpha
-        // RR -> beta
-        // LR -> gamma
-        // RL -> theta
-
-        let smallest_distance = Infinity;
-        let smallest_path = "NONE";
-
-        // LL -> alpha path
-        let S1_LL = R*(bitangents_LL.c1.alpha - position_angle_in_circle1_LL);
-        let L_LL  = bitangents_LL.distances.alpha;
-        let S2_LL = R*(bitangents_LL.c2.alpha - position_angle_in_circle2_LL);
-        let distance_LL = S1_LL + L_LL + S2_LL;
-        if(distance_LL < smallest_distance){
-            smallest_distance = distance_LL;
-            smallest_path = "LL";
-        }
-
-        // RR -> beta path
-        let S1_RR = R*(bitangents_RR.c1.beta - position_angle_in_circle1_RR);
-        let L_RR  = bitangents_RR.distances.beta;
-        let S2_RR = R*(bitangents_RR.c2.beta - position_angle_in_circle2_RR);
-        let distance_RR = S1_RR + L_RR + S2_RR;
-        if(distance_RR < smallest_distance){
-            smallest_distance = distance_RR;
-            smallest_path = "RR";
-        }
-
-        // LR -> gamma path
-        let S1_LR = R*(bitangents_LR.c1.gamma - position_angle_in_circle1_LR);
-        let L_LR  = bitangents_RR.distances.gamma;
-        let S2_LR = R*(bitangents_LR.c2.gamma - position_angle_in_circle2_LR);
-        let distance_LR = S1_LR + L_LR + S2_LR;
-        if(distance_LR < smallest_distance){
-            smallest_distance = distance_LR;
-            smallest_path = "LR";
-        }
-
-        // RL -> theta path
-        let S1_RL = R*(bitangents_LR.c1.theta - position_angle_in_circle1_RL);
-        let L_RL  = bitangents_RR.distances.theta;
-        let S2_RL = R*(bitangents_LR.c2.theta - position_angle_in_circle2_RL);
-        let distance_RL = S1_RL + L_RL + S2_RL;
-        if(distance_RL < smallest_distance){
-            smallest_distance = distance_RL;
-            smallest_path = "RL";
-        }
-        // console.log(smallest_path);
-
 
         let circles_dx_LL = c2_left.x - c1_left.x;
         let circles_dy_LL = c2_left.y - c1_left.y;
@@ -381,8 +338,108 @@
             RLR = false;
         }
         
+        // Decide which set of bitangents is smallest
+        // LSL -> alpha
+        // RSR -> beta
+        // LSR -> gamma
+        // RSL -> theta
+        // LRL
+        // RLR
+        console.clear();
+        let smallest_distance = Infinity;
+        smallest_path = "NONE";
+
+        ;
+        // LSL -> alpha path
+        let S1_LL = R*((2*Math.PI-Math.atan2(tpoint_LL_1.y-c1_left.y,tpoint_LL_1.x-c1_left.x)+p_left_angle) % (2*Math.PI));
+        let tpoint_LL_dx = tpoint_LL_2.x - tpoint_LL_1.x;
+        let tpoint_LL_dy = tpoint_LL_2.y - tpoint_LL_1.y;
+        let L_LL  = Math.sqrt(tpoint_LL_dx*tpoint_LL_dx + tpoint_LL_dy*tpoint_LL_dy);
+        let S2_LL = R*((2*Math.PI - q_left_angle + Math.atan2(tpoint_LL_2.y-c2_left.y,tpoint_LL_2.x-c2_left.x)) % (2*Math.PI));
+        distance_LL = S1_LL + L_LL + S2_LL;
+        if(distance_LL < smallest_distance){
+            smallest_distance = distance_LL;
+            smallest_path = "LSL";
+        }
+        
+
+        // RSR -> beta path
+        let S1_RR = R*(2*Math.PI -  (2*Math.PI-Math.atan2(tpoint_RR_1.y-c1_right.y,tpoint_RR_1.x-c1_right.x)+p_right_angle) % (2*Math.PI) );
+        let L_RR  = bitangents_RR.distances.beta;
+        let S2_RR = R*((2*Math.PI-Math.atan2(tpoint_RR_2.y-c2_right.y,tpoint_RR_2.x-c2_right.x)+q_right_angle) % (2*Math.PI) );
+        distance_RR = S1_RR + L_RR + S2_RR;
+        if(distance_RR < smallest_distance){
+            smallest_distance = distance_RR;
+            smallest_path = "RSR";
+        }
+
+        // LSR -> gamma path
+        let S1_LR = R*((2*Math.PI-Math.atan2(tpoint_LR_1.y-c1_left.y,tpoint_LR_1.x-c1_left.x)+p_left_angle) % (2*Math.PI));
+        let tpoint_LR_dx = tpoint_LR_2.x - tpoint_LR_1.x;
+        let tpoint_LR_dy = tpoint_LR_2.y - tpoint_LR_1.y;
+        let L_LR  = Math.sqrt(tpoint_LR_dx*tpoint_LR_dx + tpoint_LR_dy*tpoint_LR_dy);
+        let S2_LR = R*((2*Math.PI-Math.atan2(tpoint_LR_2.y-c2_right.y,tpoint_LR_2.x-c2_right.x)+q_right_angle) % (2*Math.PI));
+        distance_LR = S1_LR + L_LR + S2_LR;
+        if(distance_LR < smallest_distance){
+            smallest_distance = distance_LR;
+            smallest_path = "LSR";
+        }
 
 
+
+        // RSL -> theta path
+        let S1_RL = (2*Math.PI - (2*Math.PI-Math.atan2(tpoint_RL_1.y-c1_right.y,tpoint_RL_1.x-c1_right.x)+p_right_angle) % (2*Math.PI))*180/Math.PI;
+        let tpoint_RL_dx = tpoint_RL_2.x - tpoint_RL_1.x;
+        let tpoint_RL_dy = tpoint_RL_2.y - tpoint_RL_1.y;
+        let L_RL  = Math.sqrt(tpoint_RL_dx*tpoint_RL_dx + tpoint_RL_dy*tpoint_RL_dy);
+        let S2_RL = (2*Math.PI -(2*Math.PI-Math.atan2(tpoint_RL_2.y-c2_left.y,tpoint_RL_2.x-c2_left.x)+q_left_angle) % (2*Math.PI))*180/Math.PI;
+        distance_RL = S1_RL + L_RL + S2_RL;
+        if(distance_RL < smallest_distance){
+            smallest_distance = distance_RL;
+            smallest_path = "RSL";
+        }
+
+
+        // LRL
+        if(LRL){
+            let m11 = Math.atan2(mid_point_1.y-c1_left.y,mid_point_1.x-c1_left.x);
+            let S1_LRL = ((2*Math.PI + p_left_angle-m11) % (2*Math.PI));
+            let S2_LRL = (2*Math.PI - (mid_point_1_angle - mid_point_2_angle) % (2*Math.PI));
+            let qlangle = Math.atan2(q.y - c2_left.y, q.x - c2_left.x);
+            let m22     = Math.atan2(mid_point_2.y-c2_left.y,mid_point_2.x-c2_left.x);
+            let S3_LRL = (2*Math.PI - (2*Math.PI - (2*Math.PI-qlangle + m22) % (2*Math.PI)));
+            distance_LRL = R*(S1_LRL + S2_LRL + S3_LRL);
+            if(distance_LRL < smallest_distance){
+                smallest_distance = distance_LRL;
+                smallest_path = "LRL";
+            }
+        }
+        // RLR
+        if(RLR){
+            let m11 = Math.atan2(mid_point_1.y-c1_right.y,mid_point_1.x-c1_right.x);
+            let S1_RLR = (2*Math.PI - (2*Math.PI + p_right_angle-m11) % (2*Math.PI));
+
+            let S2_RLR = (2*Math.PI - (mid_point_1_angle - mid_point_2_angle) % (2*Math.PI));
+
+            let qlangle = Math.atan2(q.y - c2_right.y, q.x - c2_right.x);
+            let m22     = Math.atan2(mid_point_2.y-c2_right.y,mid_point_2.x-c2_right.x);
+            let S3_RLR = ((2*Math.PI - (2*Math.PI-qlangle + m22) % (2*Math.PI)));
+
+            distance_RLR = R*(S1_RLR + S2_RLR + S3_RLR);
+
+            if(distance_RLR < smallest_distance){
+                smallest_distance = distance_RLR;
+                smallest_path = "RLR";
+            }
+        }
+        
+
+        console.log("LSL (orange):",distance_LL);
+        console.log("RSR (black):",distance_RR);
+        console.log("LSR (green):",distance_LR);
+        console.log("RSL (purple):",distance_RL);
+        console.log("RLR:",distance_RLR);
+        console.log("LRL:",distance_LRL);
     }
 
     function get_bitangents(circle1,circle2){
@@ -419,47 +476,6 @@
     }
 
 
-    function decide_curve_type(){
-        // let R = rotationAroundPoint(p,Math.atan2(u.y,u.x));
-        // let R_inverse = rotationAroundPoint(p,-Math.atan2(u.y,u.x));
-        let vector_between_points = {x:q.x-p.x, y:q.y-p.y};
-        let euclidean_distance = Math.sqrt(vector_between_points.x*vector_between_points.x + vector_between_points.y*vector_between_points.y);
-        
-        let angle_between_dirs = angle_between(u,v);
-
-        let is_right_of_1 = angle_between(u,vector_between_points)>Math.PI;
-        let is_right_of_2 = angle_between(v,vector_between_points)>Math.PI;
-
-        curve_type = is_right_of_2;
-        if(euclidean_distance > 4*R){
-            if(is_right_of_1){
-                if(is_right_of_2){
-                    curve_type = "RSL"; // Inner tangent
-                }
-                else{
-                    curve_type = "RSR"; // Outer tangent
-                }
-            }
-            else{
-                if(is_right_of_2){
-                    curve_type = "LSL"; // Outer tangent
-                }
-                else{
-                    curve_type = "LSR"; // Inner tangent
-                }
-            }
-        }
-        else{
-            // curve_type = "Either RLR or LRL";
-            if (dot(u,v)<0){
-                curve_type = "RLR";
-            }
-            else {
-                curve_type = "LRL";
-            }
-        }
-    }
-
 
 
   
@@ -469,102 +485,35 @@
 
     function compute_everything(){
         new_algorithm(p,q,u,v);
-        return;
-        decide_curve_type();
-
-
-        let pos_dx = p.x - q.x;
-        let pos_dy = p.y - q.y;
-        let distance_between_positions = Math.sqrt(pos_dx*pos_dx + pos_dy*pos_dy);
-
-        let dir_orth_1 = get_orthogonal(u);
-        let dir_orth_2 = get_orthogonal(v);
-
-        switch (curve_type) {
-            case "RSR":
-                c1.x = p.x - R*dir_orth_1.x;
-                c1.y = p.y - R*dir_orth_1.y;
-                
-                c2.x = q.x + R*dir_orth_2.x;
-                c2.y = q.y + R*dir_orth_2.y;
-                break;
-            case "RSL":
-                c1.x = p.x - R*dir_orth_1.x;
-                c1.y = p.y - R*dir_orth_1.y;
-                
-                c2.x = q.x + R*dir_orth_2.x;
-                c2.y = q.y + R*dir_orth_2.y;
-                break;
-            case "LSL":
-                c1.x = p.x + R*dir_orth_1.x;
-                c1.y = p.y + R*dir_orth_1.y;
-                
-                c2.x = q.x + R*dir_orth_2.x;
-                c2.y = q.y + R*dir_orth_2.y;
-                break;
-            case "LSR":
-                c1.x = p.x + R*dir_orth_1.x;
-                c1.y = p.y + R*dir_orth_1.y;
-                
-                c2.x = q.x - R*dir_orth_2.x;
-                c2.y = q.y - R*dir_orth_2.y;
-                break;
-            case "RLR":
-                c1.x = p.x - R*dir_orth_1.x;
-                c1.y = p.y - R*dir_orth_1.y;
-                
-                c2.x = q.x + R*dir_orth_2.x;
-                c2.y = q.y + R*dir_orth_2.y;
-                break;
-            case "LRL":
-                c1.x = p.x + R*dir_orth_1.x;
-                c1.y = p.y + R*dir_orth_1.y;
-                
-                c2.x = q.x + R*dir_orth_2.x;
-                c2.y = q.y + R*dir_orth_2.y;
-                break;
-            default:
-                break;
-        }
-        
-        // Circle distances and straight line segment
-        let circles_dx = c2.x - c1.x;
-        let circles_dy = c2.y - c1.y;
-        let distance_between_circles = Math.sqrt(circles_dx*circles_dx + circles_dy*circles_dy);
-        let angle_between_circle_centers = Math.atan2(circles_dy,circles_dx);
-        let L = Math.sqrt(distance_between_circles*distance_between_circles - 4*R*R);
-
-        // Calculate initial angles
-        dx1 = p.x - c1.x;
-        dy1 = p.y - c1.y;
-        alpha0 = Math.atan2(dy1,dx1);
-        dx2 = q.x - c2.x;
-        dy2 = q.y - c2.y;
-        beta0 = Math.atan2(dy2,dx2);
-        // console.log(beta0);
-        // if(curve_type == "LSR"){
-        alpha1 = Math.atan2(L,2*R) + angle_between_circle_centers;
-        let sin1 = Math.sin(alpha0-alpha1);
-        let cos1 = Math.cos(alpha0-alpha1);
-        p1.x =  dx1*cos1 + dy1*sin1  + c1.x;
-        p1.y = -dx1*sin1 + dy1*cos1  + c1.y;
-    
-
-        // Calculate p2
-        beta1 = Math.PI - alpha1 + beta0;
-        // let gamma = angle_between_circle_centers - alpha1 - Math.PI;
-        let sin2 = Math.sin(beta1);
-        let cos2 = Math.cos(beta1);
-        p2.x =  dx2*cos2 + dy2*sin2  + c2.x;
-        p2.y = -dx2*sin2 + dy2*cos2  + c2.y;
-        // }
     }
 
-    function new_draw_canvas(){
+    function draw_canvas(){
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
+
+        ctx.beginPath();
+        ctx.font = "20px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText(smallest_path, 50,50);
+
+        ctx.beginPath();
+        ctx.font = "16px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("Press right mouse button to set start.", 50,80);
+        ctx.beginPath();
+        ctx.font = "16px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("Press left mouse button to set end.", 50,100);
+        ctx.beginPath();
+        ctx.font = "16px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("Drag to set orientation.", 50,120);
+
         let arrow_length = 40;
-        drawArrow(p.x,p.y,p.x+u.x*arrow_length,p.y+u.y*arrow_length);
-        drawArrow(q.x,q.y,q.x+v.x*arrow_length,q.y+v.y*arrow_length);
+
+        drawArrow(p.x,p.y,p.x+u.x*arrow_length,p.y+u.y*arrow_length,"blue");
+        drawArrow(q.x,q.y,q.x+v.x*arrow_length,q.y+v.y*arrow_length,"red");
 
         
         // Draw left and right circles of both positions
@@ -601,6 +550,15 @@
         // ctx.fillStyle = "gray";
         // ctx.fillText("R", c2_right.x,c2_right.y);
         
+
+
+        // Draw tangent points
+        // draw_tangent_points();
+        draw_tangent_lines();
+
+        draw_LRL_RLR();
+        
+
         // Draw positions
         ctx.beginPath();
         ctx.fillStyle = 'blue';
@@ -611,61 +569,23 @@
         ctx.arc(q.x, q.y, 3, 0, 2 * Math.PI);
         ctx.fill();
 
-        // Draw tangent points
-        draw_tangent_points();
-        draw_tangent_lines();
+        ctx.beginPath();
+        ctx.font = "20px Arial";
+        ctx.fillStyle = "blue";
+        ctx.fillText("Start", p.x+10,p.y-10);
 
-        // Draw middle circle
-        if(LRL || RLR){
-            // ctx.lineWidth = 5;
-            // ctx.strokeStyle = "gray";
-            // ctx.beginPath();
-            // ctx.arc(middle_circle.x,middle_circle.y,R,0,2*Math.PI);
-            // ctx.stroke();
-
-            // Draw middle circle points
-            ctx.beginPath();
-            ctx.fillStyle = 'brown';
-            ctx.arc(mid_point_1.x, mid_point_1.y, 3, 0, 2 * Math.PI);
-            ctx.fill();
-
-            ctx.beginPath();
-            ctx.fillStyle = 'brown';
-            ctx.arc(mid_point_2.x, mid_point_2.y, 3, 0, 2 * Math.PI);
-            ctx.fill();
-
-
-            ctx.lineWidth = 3;
-            ctx.strokeStyle = "brown";
-            ctx.beginPath();
-            ctx.arc(middle_circle.x,middle_circle.y,R,mid_point_1_angle,mid_point_2_angle);
-            ctx.stroke();
-
-            if(LRL){
-                ctx.beginPath();
-                ctx.arc(c1_left.x,c1_left.y,R,mid_point_1_angle+Math.PI,p_left_angle);
-                ctx.stroke();
-
-                ctx.beginPath();
-                ctx.arc(c2_left.x,c2_left.y,R,q_left_angle,mid_point_2_angle-Math.PI);
-                ctx.stroke();
-            }
-            else if(RLR){
-                ctx.beginPath();
-                ctx.arc(c1_right.x,c1_right.y,R,p_right_angle,mid_point_2_angle-Math.PI);
-                ctx.stroke();
-
-                ctx.beginPath();
-                ctx.arc(c2_right.x,c2_right.y,R,mid_point_1_angle+Math.PI,q_right_angle);
-                ctx.stroke();
-            }
-        }
+        ctx.beginPath();
+        ctx.font = "20px Arial";
+        ctx.fillStyle = "red";
+        ctx.fillText("End", q.x+10,q.y-10);
 
         
     }
 
 
     function draw_tangent_points(){
+
+       
         // LL direct tangent
         ctx.beginPath();
         ctx.fillStyle = 'orange';
@@ -710,182 +630,134 @@
     function draw_tangent_lines(){
         ctx.lineWidth = 3;
         // LL direct tangent
-        ctx.beginPath();
-        ctx.strokeStyle = 'orange';
-        ctx.moveTo(tpoint_LL_1.x, tpoint_LL_1.y);
-        ctx.lineTo(tpoint_LL_2.x, tpoint_LL_2.y);
-        ctx.stroke();
-
-        let tpoint_LL_1_angle = Math.atan2(tpoint_LL_1.y - c1_left.y, tpoint_LL_1.x - c1_left.x);
-        ctx.beginPath();
-        ctx.arc(c1_left.x,c1_left.y,R,tpoint_LL_1_angle,p_left_angle);
-        ctx.stroke();
-        let tpoint_LL_2_angle = Math.atan2(tpoint_LL_2.y - c2_left.y, tpoint_LL_2.x - c2_left.x);
-        ctx.beginPath();
-        ctx.arc(c2_left.x,c2_left.y,R,q_left_angle,tpoint_LL_2_angle);
-        ctx.stroke();
+        if(smallest_path == "LSL"){
+            ctx.beginPath();
+            ctx.strokeStyle = 'orange';
+            ctx.moveTo(tpoint_LL_1.x, tpoint_LL_1.y);
+            ctx.lineTo(tpoint_LL_2.x, tpoint_LL_2.y);
+            ctx.stroke();
+    
+            let tpoint_LL_1_angle = Math.atan2(tpoint_LL_1.y - c1_left.y, tpoint_LL_1.x - c1_left.x);
+            ctx.beginPath();
+            ctx.arc(c1_left.x,c1_left.y,R,tpoint_LL_1_angle,p_left_angle);
+            ctx.stroke();
+            let tpoint_LL_2_angle = Math.atan2(tpoint_LL_2.y - c2_left.y, tpoint_LL_2.x - c2_left.x);
+            ctx.beginPath();
+            ctx.arc(c2_left.x,c2_left.y,R,q_left_angle,tpoint_LL_2_angle);
+            ctx.stroke();
+        }
 
         // RR direct tangent
-        ctx.beginPath();
-        ctx.strokeStyle = 'black';
-        ctx.moveTo(tpoint_RR_1.x, tpoint_RR_1.y);
-        ctx.lineTo(tpoint_RR_2.x, tpoint_RR_2.y);
-        ctx.stroke();
-
-        let tpoint_RR_1_angle = Math.atan2(tpoint_RR_1.y - c1_right.y, tpoint_RR_1.x - c1_right.x);
-        ctx.beginPath();
-        ctx.arc(c1_right.x,c1_right.y,R,p_right_angle,tpoint_RR_1_angle);
-        ctx.stroke();
-        let tpoint_RR_2_angle = Math.atan2(tpoint_RR_2.y - c2_right.y, tpoint_RR_2.x - c2_right.x);
-        ctx.beginPath();
-        ctx.arc(c2_right.x,c2_right.y,R,tpoint_RR_2_angle,q_right_angle);
-        ctx.stroke();
+        if(smallest_path == "RSR"){
+            ctx.beginPath();
+            ctx.strokeStyle = 'black';
+            ctx.moveTo(tpoint_RR_1.x, tpoint_RR_1.y);
+            ctx.lineTo(tpoint_RR_2.x, tpoint_RR_2.y);
+            ctx.stroke();
+    
+            let tpoint_RR_1_angle = Math.atan2(tpoint_RR_1.y - c1_right.y, tpoint_RR_1.x - c1_right.x);
+            ctx.beginPath();
+            ctx.arc(c1_right.x,c1_right.y,R,p_right_angle,tpoint_RR_1_angle);
+            ctx.stroke();
+            let tpoint_RR_2_angle = Math.atan2(tpoint_RR_2.y - c2_right.y, tpoint_RR_2.x - c2_right.x);
+            ctx.beginPath();
+            ctx.arc(c2_right.x,c2_right.y,R,tpoint_RR_2_angle,q_right_angle);
+            ctx.stroke();
+        }
 
         // LR indirect tangent
-        ctx.beginPath();
-        ctx.strokeStyle = 'green';
-        ctx.moveTo(tpoint_LR_1.x, tpoint_LR_1.y);
-        ctx.lineTo(tpoint_LR_2.x, tpoint_LR_2.y);
-        ctx.stroke();
-        
-        let tpoint_LR_1_angle = Math.atan2(tpoint_LR_1.y - c1_left.y, tpoint_LR_1.x - c1_left.x);
-        ctx.beginPath();
-        ctx.arc(c1_left.x,c1_left.y,R,tpoint_LR_1_angle,p_left_angle);
-        ctx.stroke();
-        let tpoint_LR_2_angle = Math.atan2(tpoint_LR_2.y - c2_right.y, tpoint_LR_2.x - c2_right.x);
-        ctx.beginPath();
-        ctx.arc(c2_right.x,c2_right.y,R,tpoint_LR_2_angle,q_right_angle);
-        ctx.stroke();
+        if(smallest_path == "LSR"){
+            ctx.beginPath();
+            ctx.strokeStyle = 'green';
+            ctx.moveTo(tpoint_LR_1.x, tpoint_LR_1.y);
+            ctx.lineTo(tpoint_LR_2.x, tpoint_LR_2.y);
+            ctx.stroke();
+            
+            let tpoint_LR_1_angle = Math.atan2(tpoint_LR_1.y - c1_left.y, tpoint_LR_1.x - c1_left.x);
+            ctx.beginPath();
+            ctx.arc(c1_left.x,c1_left.y,R,tpoint_LR_1_angle,p_left_angle);
+            ctx.stroke();
+            let tpoint_LR_2_angle = Math.atan2(tpoint_LR_2.y - c2_right.y, tpoint_LR_2.x - c2_right.x);
+            ctx.beginPath();
+            ctx.arc(c2_right.x,c2_right.y,R,tpoint_LR_2_angle,q_right_angle);
+            ctx.stroke();
+        }
 
         // RL indirect tangent
-        ctx.beginPath();
-        ctx.strokeStyle = 'purple';
-        ctx.moveTo(tpoint_RL_1.x, tpoint_RL_1.y);
-        ctx.lineTo(tpoint_RL_2.x, tpoint_RL_2.y);
-        ctx.stroke();
-
-        let tpoint_RL_1_angle = Math.atan2(tpoint_RL_1.y - c1_right.y, tpoint_RL_1.x - c1_right.x);
-        ctx.beginPath();
-        ctx.arc(c1_right.x,c1_right.y,R,p_right_angle,tpoint_RL_1_angle);
-        ctx.stroke();
-        let tpoint_RL_2_angle = Math.atan2(tpoint_RL_2.y - c2_left.y, tpoint_RL_2.x - c2_left.x);
-        ctx.beginPath();
-        ctx.arc(c2_left.x,c2_left.y,R,q_left_angle,tpoint_RL_2_angle);
-        ctx.stroke();
+        if(smallest_path == "RSL"){
+            ctx.beginPath();
+            ctx.strokeStyle = 'purple';
+            ctx.moveTo(tpoint_RL_1.x, tpoint_RL_1.y);
+            ctx.lineTo(tpoint_RL_2.x, tpoint_RL_2.y);
+            ctx.stroke();
+    
+            let tpoint_RL_1_angle = Math.atan2(tpoint_RL_1.y - c1_right.y, tpoint_RL_1.x - c1_right.x);
+            ctx.beginPath();
+            ctx.arc(c1_right.x,c1_right.y,R,p_right_angle,tpoint_RL_1_angle);
+            ctx.stroke();
+            let tpoint_RL_2_angle = Math.atan2(tpoint_RL_2.y - c2_left.y, tpoint_RL_2.x - c2_left.x);
+            ctx.beginPath();
+            ctx.arc(c2_left.x,c2_left.y,R,q_left_angle,tpoint_RL_2_angle);
+            ctx.stroke();
+        }
 
     }
 
-    function draw_canvas(){
-        new_draw_canvas();
-        return;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    function draw_LRL_RLR(){
+        // Draw middle circle
+        if((smallest_path == "LRL" || smallest_path =="RLR") && (LRL || RLR)){
+            // ctx.lineWidth = 5;
+            // ctx.strokeStyle = "gray";
+            // ctx.beginPath();
+            // ctx.arc(middle_circle.x,middle_circle.y,R,0,2*Math.PI);
+            // ctx.stroke();
 
-        let arrow_length = 40;
-        drawArrow(p.x,p.y,p.x+u.x*arrow_length,p.y+u.y*arrow_length);
-        drawArrow(q.x,q.y,q.x+v.x*arrow_length,q.y+v.y*arrow_length);
+            // Draw middle circle points
+            // ctx.beginPath();
+            // ctx.fillStyle = 'brown';
+            // ctx.arc(mid_point_1.x, mid_point_1.y, 3, 0, 2 * Math.PI);
+            // ctx.fill();
 
-        // Draw positions
-        ctx.beginPath();
-        ctx.fillStyle = 'blue';
-        ctx.arc(p.x, p.y, 3, 0, 2 * Math.PI);
-        ctx.fill();
+            // ctx.beginPath();
+            // ctx.fillStyle = 'brown';
+            // ctx.arc(mid_point_2.x, mid_point_2.y, 3, 0, 2 * Math.PI);
+            // ctx.fill();
 
-        ctx.beginPath();
-        ctx.fillStyle = 'red';
-        ctx.arc(q.x, q.y, 3, 0, 2 * Math.PI);
-        ctx.fill();
+            // Draw middle circle path arc
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = "brown";
+            ctx.beginPath();
+            ctx.arc(middle_circle.x,middle_circle.y,R,mid_point_1_angle,mid_point_2_angle);
+            ctx.stroke();
 
+            if(smallest_path == "LRL"){
+                ctx.beginPath();
+                ctx.arc(c1_left.x,c1_left.y,R,mid_point_1_angle+Math.PI,p_left_angle);
+                ctx.stroke();
 
-        // Draw circles
-        ctx.lineWidth = 2;
-        ctx.strokeStyle = "gray";
+                ctx.beginPath();
+                ctx.arc(c2_left.x,c2_left.y,R,q_left_angle,mid_point_2_angle-Math.PI);
+                ctx.stroke();
+            }
+            else if(smallest_path == "RLR"){
+                ctx.beginPath();
+                ctx.arc(c1_right.x,c1_right.y,R,p_right_angle,mid_point_2_angle-Math.PI);
+                ctx.stroke();
 
-        let dir_orth_1 = get_orthogonal(u);        
-        ctx.beginPath();
-        ctx.arc(p.x + R*dir_orth_1.x, p.y + R*dir_orth_1.y, R, 0, 2 * Math.PI);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.font = "20px Arial";
-        ctx.fillStyle = "gray";
-        ctx.fillText("L", p.x + R*dir_orth_1.x, p.y + R*dir_orth_1.y,);
-
-        ctx.beginPath();
-        ctx.arc(p.x - R*dir_orth_1.x, p.y - R*dir_orth_1.y, R, 0, 2 * Math.PI);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.font = "20px Arial";
-        ctx.fillStyle = "gray";
-        ctx.fillText("R", p.x - R*dir_orth_1.x, p.y - R*dir_orth_1.y,);
-
-        let dir_orth_2 = get_orthogonal(v);
-        ctx.beginPath();
-        ctx.arc(q.x + R*dir_orth_2.x, q.y + R*dir_orth_2.y, R, 0, 2 * Math.PI);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.font = "20px Arial";
-        ctx.fillStyle = "gray";
-        ctx.fillText("L", q.x + R*dir_orth_2.x, q.y + R*dir_orth_2.y,);
-
-        ctx.beginPath();
-        ctx.arc(q.x - R*dir_orth_2.x, q.y - R*dir_orth_2.y, R, 0, 2 * Math.PI);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.font = "20px Arial";
-        ctx.fillStyle = "gray";
-        ctx.fillText("R", q.x - R*dir_orth_2.x, q.y - R*dir_orth_2.y,);
-
-        ctx.beginPath();
-        ctx.arc(c1.x, c1.y, R, 0, 2 * Math.PI);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.arc(c2.x, c2.y, R, 0, 2 * Math.PI);
-        ctx.stroke();
-
-        // Draw Dubins path
-        ctx.beginPath();
-        ctx.fillStyle = 'black';
-        ctx.arc(p1.x, p1.y, 3, 0, 2 * Math.PI);
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.fillStyle = 'black';
-        ctx.arc(p2.x, p2.y, 3, 0, 2 * Math.PI);
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.strokeStyle = 'green';
-        ctx.lineWidth = 4;
-        ctx.arc(c1.x, c1.y, R,alpha1,alpha0);
-        ctx.stroke();
-
-
-
-        ctx.beginPath();
-        ctx.lineCap = 'round';
-        ctx.strokeStyle = 'green';
-        ctx.lineWidth = 4;
-        ctx.moveTo(p1.x,p1.y);
-        ctx.lineTo(p2.x,p2.y);
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.strokeStyle = 'green';
-        ctx.lineWidth = 4;
-        ctx.arc(c2.x, c2.y, R, beta0-beta1,beta0);
-        ctx.stroke();
-
-        ctx.font = "30px Arial";
-        ctx.fillStyle = "green";
-        ctx.fillText(curve_type, 10, 50);
+                ctx.beginPath();
+                ctx.arc(c2_right.x,c2_right.y,R,mid_point_1_angle+Math.PI,q_right_angle);
+                ctx.stroke();
+            }
+        }
     }
 
-
-    function drawArrow(fromx, fromy, tox, toy){
+    function drawArrow(fromx, fromy, tox, toy,color){
         //variables to be used when creating the arrow
         // var c = document.getElementById("myCanvas");
         // var ctx = c.getContext("2d");
         const width = 4;
         var headlen = 5;
+        // let color = "black"
         // This makes it so the end of the arrow head is located at tox, toy, don't ask where 1.15 comes from
         var angle = Math.atan2(toy-fromy,tox-fromx);
 
@@ -897,7 +769,7 @@
         ctx.beginPath();
         ctx.moveTo(fromx, fromy);
         ctx.lineTo(tox, toy);
-        ctx.strokeStyle = "gray";
+        ctx.strokeStyle = color;
         ctx.lineWidth = width;
         ctx.stroke();
         
@@ -914,10 +786,10 @@
         ctx.lineTo(tox-headlen*Math.cos(angle-Math.PI/7),toy-headlen*Math.sin(angle-Math.PI/7));
 
         //draws the paths created above
-        ctx.strokeStyle = "gray";
+        ctx.strokeStyle = color;
         ctx.lineWidth = width;
         ctx.stroke();
-        ctx.fillStyle = "gray";
+        ctx.fillStyle = color;
         ctx.fill();
     }
 
