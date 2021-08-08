@@ -566,38 +566,38 @@
 
         
         // Draw left and right circles of both positions
-        ctx.lineWidth = 5;
-        ctx.strokeStyle = "gray";
-        ctx.beginPath();
-        ctx.arc(c1_left.x,c1_left.y,R,0,2*Math.PI);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.arc(c1_right.x,c1_right.y,R,0,2*Math.PI);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.arc(c2_left.x,c2_left.y,R,0,2*Math.PI);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.arc(c2_right.x,c2_right.y,R,0,2*Math.PI);
-        ctx.stroke();
+        // ctx.lineWidth = 5;
+        // ctx.strokeStyle = "gray";
+        // ctx.beginPath();
+        // ctx.arc(c1_left.x,c1_left.y,R,0,2*Math.PI);
+        // ctx.stroke();
+        // ctx.beginPath();
+        // ctx.arc(c1_right.x,c1_right.y,R,0,2*Math.PI);
+        // ctx.stroke();
+        // ctx.beginPath();
+        // ctx.arc(c2_left.x,c2_left.y,R,0,2*Math.PI);
+        // ctx.stroke();
+        // ctx.beginPath();
+        // ctx.arc(c2_right.x,c2_right.y,R,0,2*Math.PI);
+        // ctx.stroke();
 
         // Draw L and R letters on each circle
-        ctx.beginPath();
-        ctx.font = "20px Arial";
-        ctx.fillStyle = "gray";
-        ctx.fillText("L", c1_left.x,c1_left.y);
-        ctx.beginPath();
-        ctx.font = "20px Arial";
-        ctx.fillStyle = "gray";
-        ctx.fillText("R", c1_right.x,c1_right.y);
-        ctx.beginPath();
-        ctx.font = "20px Arial";
-        ctx.fillStyle = "gray";
-        ctx.fillText("L", c2_left.x,c2_left.y);
-        ctx.beginPath();
-        ctx.font = "20px Arial";
-        ctx.fillStyle = "gray";
-        ctx.fillText("R", c2_right.x,c2_right.y);
+        // ctx.beginPath();
+        // ctx.font = "20px Arial";
+        // ctx.fillStyle = "gray";
+        // ctx.fillText("L", c1_left.x,c1_left.y);
+        // ctx.beginPath();
+        // ctx.font = "20px Arial";
+        // ctx.fillStyle = "gray";
+        // ctx.fillText("R", c1_right.x,c1_right.y);
+        // ctx.beginPath();
+        // ctx.font = "20px Arial";
+        // ctx.fillStyle = "gray";
+        // ctx.fillText("L", c2_left.x,c2_left.y);
+        // ctx.beginPath();
+        // ctx.font = "20px Arial";
+        // ctx.fillStyle = "gray";
+        // ctx.fillText("R", c2_right.x,c2_right.y);
         
         // Draw positions
         ctx.beginPath();
@@ -615,11 +615,11 @@
 
         // Draw middle circle
         if(LRL || RLR){
-            ctx.lineWidth = 5;
-            ctx.strokeStyle = "gray";
-            ctx.beginPath();
-            ctx.arc(middle_circle.x,middle_circle.y,R,0,2*Math.PI);
-            ctx.stroke();
+            // ctx.lineWidth = 5;
+            // ctx.strokeStyle = "gray";
+            // ctx.beginPath();
+            // ctx.arc(middle_circle.x,middle_circle.y,R,0,2*Math.PI);
+            // ctx.stroke();
 
             // Draw middle circle points
             ctx.beginPath();
@@ -764,7 +764,7 @@
 
         let tpoint_RL_1_angle = Math.atan2(tpoint_RL_1.y - c1_right.y, tpoint_RL_1.x - c1_right.x);
         ctx.beginPath();
-        ctx.arc(c1_right.x,c1_right.y,R,p_right_angle,tpoint_RR_1_angle);
+        ctx.arc(c1_right.x,c1_right.y,R,p_right_angle,tpoint_RL_1_angle);
         ctx.stroke();
         let tpoint_RL_2_angle = Math.atan2(tpoint_RL_2.y - c2_left.y, tpoint_RL_2.x - c2_left.x);
         ctx.beginPath();
