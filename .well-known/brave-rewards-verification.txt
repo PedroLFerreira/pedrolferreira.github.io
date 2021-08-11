@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: pedrolferreira.github.io
+Token: b9d43301fe35ceb40fc69b5f2d7d02fa5ff66493b6b0357826110b7807071679
